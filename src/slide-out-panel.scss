@@ -19,12 +19,7 @@ $so-content-background-color: #fff !default;
 $so-footer-background-color: #fff !default;
 
 // ---------------------------------------------------- SLIDE OUT PANEL //
-.slide-out-panel-containers {
-	animation: blarg;
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-template-rows: auto auto;
-	grid-gap: 20px;
+.slide-out-panel-container {
 	-webkit-overflow-scrolling: touch;
 	background-color: $so-container-background;
 	bottom: 0;
