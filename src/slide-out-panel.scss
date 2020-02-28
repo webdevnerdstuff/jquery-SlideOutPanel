@@ -1,0 +1,138 @@
+// ---------------------------------------------------- VARIABLES //
+$pieces-padding: 15px;
+$so-screen-sm: 768px !default;
+
+$so-close-btn-color: #000 !default;
+$so-close-font-size: 12px !default;
+
+$so-container-background: #fff !default;
+$so-container-box-shadow: -3px 3px 9px rgba(0, 0, 0, .3) !default;
+$so-container-transition: left ease, right ease !default;
+$so-container-z-index: 9999 !default;
+
+$so-content-no-header-padding-top: $pieces-padding * 2 !default;
+$so-header-background-color: #fff !default;
+$so-header-border-color: #e5e5e5 !default;
+$so-header-border-width: 1px !default;
+
+$so-content-background-color: #fff !default;
+$so-footer-background-color: #fff !default;
+
+// ---------------------------------------------------- SLIDE OUT PANEL //
+.slide-out-panel-containers {
+	animation: blarg;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: auto auto;
+	grid-gap: 20px;
+	-webkit-overflow-scrolling: touch;
+	background-color: $so-container-background;
+	bottom: 0;
+	box-shadow: $so-container-box-shadow;
+	height: auto;
+	max-width: 100vw;
+	overflow-y: auto;
+	position: fixed;
+	top: 0;
+	transition: $so-container-transition;
+	z-index: $so-container-z-index;
+
+	@media all and (max-width: $so-screen-sm) {
+		bottom: initial;
+		position: absolute !important;
+	}
+
+	&.open {
+		@media all and (max-width: $so-screen-sm) {
+			width: 100% !important;
+		}
+	}
+
+	// -------------------------- Close button //
+	.close-slide-out-panel {
+		color: $so-close-btn-color;
+		cursor: pointer;
+		font-size: $so-close-font-size;
+		font-weight: bold;
+		height: auto;
+		line-height: $so-close-font-size;
+		min-height: $so-close-font-size;
+		min-width: $so-close-font-size;
+		opacity: .5;
+		position: absolute;
+		right: $pieces-padding - 5;
+		top: 50%;
+		transform: translateY(-50%);
+		transition: opacity .35s ease;
+		width: auto;
+		z-index: 9999;
+
+		&:hover {
+			font-weight: bold;
+			opacity: 1;
+		}
+	}
+
+	// -------------------------- Panel pieces //
+	.slide-out-header,
+	.slide-out-content,
+	.slide-out-footer {
+		padding: $pieces-padding;
+		position: relative;
+		width: 100%;
+	}
+
+	// -------------------------- Panel header //
+	.slide-out-header {
+		align-items: center;
+		background-color: $so-header-background-color;
+		border: $so-header-border-width solid $so-header-border-color;
+		display: flex;
+		justify-content: center;
+		text-align: center;
+
+		h4 {
+			margin: 0;
+			padding: 0;
+		}
+	}
+
+	// -------------------------- Panel content //
+	.slide-out-content {
+		background-color: $so-content-background-color;
+
+		&.no-header {
+			padding-top: $so-content-no-header-padding-top;
+
+			.close-slide-out-panel {
+				display: block;
+			}
+		}
+
+		.close-slide-out-panel {
+			display: none;
+			position: absolute;
+			top: $pieces-padding;
+		}
+	}
+
+	// -------------------------- Panel footer //
+	.slide-out-footer {
+		background-color: $so-footer-background-color;
+	}
+}
+
+.slide-out-panel {
+	display: none;
+}
+
+// ---------------------------------------------------- SLIDE OUT PANEL SCREEN //
+.slide-out-panel-screen {
+	height: 100vh;
+	left: 0;
+	opacity: 0;
+	position: fixed;
+	top: 0;
+	transition: opacity ease;
+	width: 100vw;
+}
