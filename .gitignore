@@ -45,6 +45,3 @@ npm-debug.log
 
 .history/
 _temp
-dist/
-
-uploads/logs
