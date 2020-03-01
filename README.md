@@ -29,7 +29,7 @@ Required tag: `<section>`
 
 ## Options
 
-<table>
+<table align="left">
   <tbody>
     <tr>
       <th>Name</th>
@@ -60,7 +60,7 @@ Required tag: `<section>`
       <td>Adjust the close button text size</td>
     </tr>
     <tr>
-      <td>enableEscapeKey |  |  |  |  </td>
+      <td>enableEscapeKey</td>
       <td>Boolean</td>
       <td>false</td>
       <td>true <br> false</td>
