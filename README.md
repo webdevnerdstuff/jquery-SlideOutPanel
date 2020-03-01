@@ -155,7 +155,7 @@ $('#slide-out-panel').SlideOutPanel({
 ## Events
 
 Name | Description
------ | ------------
+:----- | :------------
 `rendered` | Fired after the panel is finished building
 `beforeOpen` | Fired before panel opens
 `afterOpen` | Fired after panel has opened
