@@ -4,37 +4,17 @@
 	// Create the defaults once //
 	const defaults = {
 		// Options //
-		className: '',
-		closeBtn: '',
+		bodyPush: true,
+		closeBtn: '&#10005;',
 		closeBtnSize: '',
-		contentClass: '',
-		footerClass: '',
-		form: {
-			acceptCharset: '',
-			action: '',
-			active: false,
-			attributes: '',
-			autocomplete: '',
-			className: '',
-			dataSet: {},
-			enctype: '',
-			id: '',
-			method: '',
-			name: '',
-			novalidate: false,
-			target: '',
-		},
-		headerClass: '',
-		headerText: '',
+		enableEscapeKey: false,
 		offsetTop: 0,
-    position: '',
-    screenClose: true,
+		screenClose: true,
 		screenOpacity: '0.5',
 		screenZindex: '9998',
-		showFooter: true,
-		showHeader: true,
 		showScreen: true,
-		slideFrom: 'right',
+    slideFrom: 'right',
+    transition: 'ease',
 		transitionDuration: '0.35s',
 		width: '350px',
 		// Methods //
@@ -45,311 +25,254 @@
 		rendered() {},
 	};
 
-	const soSettings = {};
+	let globalSettings;
 
-	// ---------------------------------------------------- SlideOutPanel constructor //
-	function SlideOutPanel(element, options) {
-		this.element = element;
+	// ---------------------------------------------------- PLUGIN DEFINITION //
+	$.fn[pluginName] = function(options) {
+		let componentElm;
+		let headerElm;
+		let contentElm;
+		let footerElm;
 
-		// Collect component elements //
-		this.componentElm = $(`#${this.element.id}`);
-		this.headerElm = $(`#${this.element.id} slot[name="header"]`);
-		this.contentElm = $(`#${this.element.id} slot[name="content"]`);
-		this.footerElm = $(`#${this.element.id} slot[name="footer"]`);
-
-		// Check to make sure the content slot exists //
-		if (typeof $(this.contentElm).html() === 'undefined') {
-			this.destroyPanel(this.element.id, `#${this.element.id} slot name="content" missing.`);
+		// Check to see if element exists //
+		if (typeof $(this).attr('id') === 'undefined') {
+			console.error(`${pluginName}: Element not found. Element options:`, options);
 			return false;
 		}
 
-		// Set settings //
-		this.settings = this.settings || {};
-		this.settings[element.id] = element;
+		// ---------------------------------------------------- SlideOutPanel constructor //
+		function SlideOutPanel(element, soOptions) {
+			// Collect component elements //
+			componentElm = $(`#${element.id}`);
+			headerElm = $(`#${element.id} header`);
+			contentElm = $(`#${element.id} section`);
+			footerElm = $(`#${element.id} footer`);
 
-		// Merge defaults and options //
-		this.settings[element.id] = $.extend({}, defaults, options);
-
-		// Set soSettings so open, close, and destroy have access to it's values //
-		soSettings[element.id] = this.settings[element.id];
-
-		// Merge defaults.form and options.form //
-		if (typeof options !== 'undefined' && typeof options.form !== 'undefined') {
-			this.settings[element.id].form = $.extend({}, defaults.form, options.form);
-		}
-
-		// Set transitionDuration to INT //
-		let transitionDuration = this.settings[element.id].transitionDuration;
-		transitionDuration = transitionDuration.replace('s', '');
-		this.settings[element.id].transitionDuration = parseFloat(transitionDuration);
-
-		this._defaults = defaults;
-		this._name = pluginName;
-
-		// Start building the panel //
-		this.init();
-		return false;
-	}
-
-	// Avoid Plugin.prototype conflicts //
-	$.extend(SlideOutPanel.prototype, {
-		// ---------------------------------------------------- INIT //
-		init() {
-			// Remove slots container //
-			$(`#${this.element.id}`).remove();
-
-			// Check to make sure the content slot exists //
-			if (typeof $(this.contentElm).html() === 'undefined') {
-				this.destroyPanel(this.element.id, `#${this.element.id} slot name="content" missing.`);
+			// Add class if missing to try to prevent showing content before built //
+			if (!componentElm.hasClass('slide-out-panel')) {
+				componentElm.addClass('slide-out-panel');
+			}
+			// Check to make sure the content section exists //
+			if (typeof $(contentElm).html() === 'undefined') {
+				destroyPanel(element.id, `#${element.id} <section> missing.`);
 				return false;
 			}
 
-			// Add new container to page //
-			this.addTemplate();
+			// Set settings //
+			globalSettings = globalSettings || {};
+			globalSettings[element.id] = element;
 
-			// Call rendered method after panel has been built //
-			this.settings[this.element.id].rendered.call();
+			// Merge defaults and options //
+			globalSettings[element.id] = $.extend({}, defaults, soOptions);
+
+			// Set transitionDuration to INT //
+			let transitionDuration = globalSettings[element.id].transitionDuration;
+			transitionDuration = transitionDuration.replace('s', '');
+			globalSettings[element.id].transitionDuration = parseFloat(transitionDuration);
+
+			this._defaults = defaults;
+			this._name = pluginName;
+
+			// Start building the panel //
+			init(element.id, globalSettings[element.id]);
 			return false;
-		},
-		// ---------------------------------------------------- COLLECT PROPERTIES //
-		collectProperties(elm) {
-			let props = '';
+		}
 
-			$(elm).each(function() {
-				$.each(this.attributes, function() {
-					if (this.specified && this.name !== 'name') {
-						props += `${this.name}="${this.value}" `;
-					}
-				});
-			});
+		// ---------------------------------------------------- INIT //
+		const init = (elmId, settings) => {
+			component(elmId, settings);
 
-			return props;
-		},
-		// ---------------------------------------------------- ADD PANEL TEMPLATE //
-		addTemplate() {
-			const settings = this.settings[this.element.id];
-			let soTemplate = '';
-
-			soTemplate += `<div id="${this.element.id}" class="slide-out-panel-container" `;
-			soTemplate += `${this.collectProperties(this.componentElm)} >`;
-
-			// Check if form is active //
-			if (settings.form && settings.form.active) {
-				const formSettings = settings.form;
-
-				soTemplate += '<form ';
-				soTemplate += formSettings.name !== '' ? `name="${formSettings.name}" ` : '';
-				soTemplate += formSettings.acceptCharset !== '' ? `accept-charset="${formSettings.acceptCharset}"` : '';
-				soTemplate += formSettings.action !== '' ? `action="${formSettings.action}" ` : '';
-				soTemplate += formSettings.autocomplete !== '' ? `autocomplete="${formSettings.autocomplete}" ` : '';
-				soTemplate += formSettings.className !== '' ? `class="${formSettings.className}" ` : '';
-				soTemplate += formSettings.id !== '' ? `id="${formSettings.id}" ` : '';
-				soTemplate += formSettings.enctype !== '' ? `enctype="${formSettings.enctype}" ` : '';
-				soTemplate += formSettings.method !== '' ? `method="${formSettings.method}" ` : '';
-				soTemplate += formSettings.novalidate ? 'novalidate ' : '';
-				soTemplate += formSettings.target !== '' ? `target="${formSettings.target}" ` : '';
-
-				// Add data sets //
-				if (Object.keys(formSettings.dataSet).length > 0) {
-					Object.entries(formSettings.dataSet).forEach(([key, val]) => {
-						soTemplate += `data-${key}="${val}" `;
-					});
-				}
-
-				soTemplate += formSettings.attributes !== '' ? formSettings.attributes : '';
-				soTemplate += ' >';
+			if (typeof $(headerElm).html() !== 'undefined') {
+				header(elmId, settings);
 			}
 
-			// Check if header should be displayed //
-			if (settings.showHeader) {
-				soTemplate += this.buildHeader();
-			}
-
-			soTemplate += this.buildContent();
-
-			// Check if footer should be displayed //
-			if (settings.showFooter) {
-				soTemplate += this.buildFooter();
-			}
-
-			// Check if form and close tag //
-			if (settings.form && settings.form.active) {
-				soTemplate += '</form>';
-			}
-
-			soTemplate += '</div>';
+			content(elmId, settings);
+			footer();
 
 			// Check if background screen should be shown //
 			if (settings.showScreen) {
-				soTemplate += `<div class="slide-out-panel-screen" data-id="${this.element.id}"></div>`;
+				screen(elmId, settings);
 			}
 
-			// Add template to DOM //
-			$('body').append(soTemplate);
+			// Call rendered method when finished with setup //
+			settings.rendered();
+			return false;
+		};
 
-			// Update section styles & classes //
-			this.updateSections();
-		},
-		// ---------------------------------------------------- UPDATE SECTIONS STYLES & CLASSES //
-		updateSections() {
-			const settings = this.settings[this.element.id];
-			const panelContainer = `#${this.element.id}.slide-out-panel-container`;
+		// ---------------------------------------------------- COMPONENT //
+		const component = (elmId, settings) => {
+			const openHorizontal = settings.slideFrom === 'left' || settings.slideFrom === 'right';
 
-			// -------------------------- Container //
-			$(panelContainer).addClass(`${settings.slideFrom} ${settings.className}`).css({
-				display: 'block',
-				height: settings.offsetTop === 0 ? 'initial' : `calc(100vh - ${settings.offsetTop})`,
-				left: settings.slideFrom === 'right' ? 'initial' : `-${settings.width}`,
-				position: settings.position,
-				right: settings.slideFrom === 'left' ? 'initial' : `-${settings.width}`,
-				top: settings.offsetTop,
-				transitionDuration: `${settings.transitionDuration}s`,
-				width: settings.width,
-			});
+			componentElm
+				.addClass(`slide-out-panel-container ${settings.slideFrom}`)
+				.css({
+					display: 'block',
+					height: settings.offsetTop === 0 ? 'initial' : `calc(100vh - ${settings.offsetTop})`,
+          top: settings.slideFrom === 'bottom' ? 'initial' : settings.offsetTop,
+          transitionTimingFunction: `${settings.transition}`,
+					transitionDuration: `${settings.transitionDuration}s`,
+					width: settings.width,
+				})
+				.attr('data-id', elmId);
 
-			// -------------------------- Header //
-			const headerClass = $(`${panelContainer} header`).attr('class');
-
-			$(`${panelContainer} header`).attr({
-				class: `slide-out-header ${settings.headerClass} ${headerClass || ''}`,
-			});
-
-			// -------------------------- Content //
-			const contentClass = $(`${panelContainer} section`).attr('class');
-
-			$(`${panelContainer} section`).attr({
-				class: `slide-out-content ${settings.contentClass} ${contentClass || ''}`,
-			});
-
-			// If no header, add class and append close button to content section //
-			if (!settings.showHeader) {
-				$(`${panelContainer} section`).addClass('no-header').append(this.closeBtn());
+			if (settings.bodyPush && openHorizontal) {
+				$('html').css({
+					transition: `width ${settings.transitionDuration}s ${settings.transition}`,
+				});
 			}
 
-			// -------------------------- Footer //
-			const footerClass = $(`${panelContainer} footer`).attr('class');
+			// Start with the panel hidden //
+			// If sliding out from left or right //
+			if (openHorizontal) {
+				componentElm.addClass(`slide-out-panel-container ${settings.slideFrom}`).css({
+					left: settings.slideFrom !== 'left' ? 'initial' : `-${settings.width}`,
+					right: settings.slideFrom !== 'right' ? 'initial' : `-${settings.width}`,
+				});
 
-			$(`${panelContainer} footer`).attr({
-				class: `slide-out-footer ${settings.footerClass} ${footerClass || ''}`,
-			});
+				if (settings.bodyPush && (settings.slideFrom === 'left' || settings.slideFrom === 'right')) {
+					$('html').addClass(`slide-out-${settings.slideFrom}`);
+				}
+			}
+			else {
+				// If sliding out from top or bottom //
+				componentElm.addClass(`slide-out-panel-container ${settings.slideFrom}`).css({
+					bottom: settings.slideFrom !== 'bottom' ? 'initial' : '-100%',
+					top: settings.slideFrom !== 'top' ? 'initial' : '-100%',
+					width: '100vw',
+				});
+			}
+		};
 
-			// -------------------------- Screen //
-			$('.slide-out-panel-screen').css({
-				backgroundColor: `rgba(0, 0, 0, ${settings.screenOpacity}`,
-				transitionDuration: `${settings.transitionDuration}s`,
-				zIndex: `-${settings.screenZindex}`,
-			});
-		},
-		// ---------------------------------------------------- BUILD PANEL PIECES //
+		// ---------------------------------------------------- PANEL PIECES //
 		// -------------------------- Header //
-		buildHeader() {
-			const settings = this.settings[this.element.id];
-			const headerElm = $(this.headerElm);
-			const headerHtml = headerElm.html();
-			let headerTemplate = '';
-
-			headerTemplate += '<header ';
-			headerTemplate += `${this.collectProperties(headerElm)} >`;
-
-			// If no headerText & no headerHtml, headerText option must be set //
-			if (!settings.headerText && !headerHtml) {
-				this.destroyPanel(this.element.id, '"headerText" option is missing.');
-				return false;
+		const header = (elmId, settings) => {
+			if (typeof headerElm.html() !== 'undefined') {
+				headerElm.addClass('slide-out-header').append(closeBtn(elmId, settings));
 			}
+		};
 
-			// Check if header slot, else use options //
-			if (headerHtml) {
-				headerTemplate += headerHtml;
-				headerTemplate += this.closeBtn();
-				headerTemplate += '</header>';
-			}
-			else {
-				headerTemplate += `<h4>${settings.headerText}</h4>`;
-				headerTemplate += this.closeBtn();
-				headerTemplate += '</header>';
-			}
-
-			return headerTemplate;
-		},
 		// -------------------------- Content //
-		buildContent() {
-			const contentElm = $(this.contentElm);
-			const contentHtml = contentElm.html();
-			let contentTemplate = '';
+		const content = (elmId, settings) => {
+			contentElm.addClass('slide-out-content');
 
-			contentTemplate += '<section ';
-			contentTemplate += `${this.collectProperties(contentElm)} >`;
-			contentTemplate += contentHtml;
-			contentTemplate += '</section>';
+			if (typeof headerElm.html() === 'undefined') {
+				contentElm.append(closeBtn(elmId, settings));
+			}
+		};
 
-			return contentTemplate;
-		},
 		// -------------------------- Footer //
-		buildFooter() {
-			const footerElm = $(this.footerElm);
-			const footerHtml = footerElm.html();
-			let footerTemplate = '';
+		const footer = () => {
+			footerElm.addClass('slide-out-footer');
+		};
 
-			footerTemplate += '<footer ';
-			footerTemplate += `${this.collectProperties(footerElm)} >`;
-
-			const footerObj = $(`#${this.element.id}.slide-out-panel-container .slide-out-footer`);
-
-			// Add footer class //
-			footerObj.addClass(this.settings[this.element.id].footerClass);
-
-			if (footerHtml) {
-				footerTemplate += footerHtml;
-			}
-			else {
-				return '';
-			}
-
-			footerTemplate += '</footer>';
-
-			return footerTemplate;
-		},
 		// -------------------------- Close button //
-		closeBtn() {
-			const settings = this.settings[this.element.id];
-
-			let closeBtn = '';
-			closeBtn += `<span class="close-slide-out-panel" data-id="${this.element.id}" ${settings.closeBtnSize ?
+		const closeBtn = (elmId, settings) => {
+			let btnHtml = '';
+			btnHtml += `<span class="close-slide-out-panel" data-id="${elmId}" ${settings.closeBtnSize ?
 				`style="font-size: ${settings.closeBtnSize}; display: block;"` :
 				''}>`;
-			closeBtn += settings.closeBtn || '&#10060';
-			closeBtn += '</span>';
+			btnHtml += settings.closeBtn;
+			btnHtml += '</span>';
 
-			return closeBtn;
-		},
+			return btnHtml;
+		};
+
+		// ---------------------------------------------------- SCREEN //
+		const screen = (elmId, settings) => {
+			let screenHtml = '';
+			screenHtml += '<div ';
+			screenHtml += 'class="slide-out-panel-screen" ';
+			screenHtml += `data-id="${elmId}" `;
+			screenHtml += 'style="';
+			screenHtml += `background-color: rgba(0, 0, 0, ${settings.screenOpacity});`;
+			screenHtml += `transition-timing-function: ${settings.transition};`;
+			screenHtml += `transition-duration: ${settings.transitionDuration}s;`;
+			screenHtml += `z-index: -${settings.screenZindex};`;
+			screenHtml += '">';
+			screenHtml += '</div>';
+
+			$('body').append(screenHtml);
+		};
+
+		// ---------------------------------------------------- PANEL POSITIONS //
+		const panelPositions = (elmId, settings, action) => {
+			const openHorizontal = settings.slideFrom === 'left' || settings.slideFrom === 'right';
+			let positionVal;
+			let css;
+
+			// Set position value //
+			if (action === 'open') {
+				positionVal = '0';
+			}
+			else {
+				positionVal = openHorizontal ? `-${settings.width}` : '-100%';
+			}
+
+			// Slide out from left or right //
+			if (openHorizontal) {
+				css = {
+					left: settings.slideFrom === 'right' ? 'initial' : positionVal,
+					right: settings.slideFrom === 'left' ? 'initial' : positionVal,
+				};
+			}
+			else {
+				// Slide out from top or bottom //
+				css = {
+					top: settings.slideFrom === 'bottom' ? 'initial' : positionVal,
+					bottom: settings.slideFrom === 'top' ? 'initial' : positionVal,
+				};
+			}
+
+			if (action === 'open') {
+				$(`#${elmId}`).addClass('open');
+			}
+			else {
+				$(`#${elmId}`).removeClass('open');
+			}
+
+			$(`#${elmId}`).css(css);
+			return false;
+		};
+
 		// ---------------------------------------------------- CLOSE PANEL //
-		closePanel(elmId, elm = false) {
-      const settings = soSettings[elmId];
-
+		const closePanel = (elmId = false, settings = false, elm = false) => {
 			// Check if panel exists //
 			if (typeof settings === 'undefined') {
-				this.destroyPanel(elmId, `#${elmId} doesn't exist.`);
+				destroyPanel(elmId, `#${elmId} doesn't exist.`);
 				return false;
-      }
-      else if ($(elm).hasClass('slide-out-panel-screen') && !settings.screenClose) {
-        // If screenClose is true, do not close panel when clicked //
-        return false;
-      }
+			}
+			else if ($(elm).hasClass('slide-out-panel-screen') && !settings.screenClose) {
+				// If screenClose is true, do not close panel when clicked //
+				return false;
+			}
+
+			// ESC Key Recursion as there is no elmId associated with it //
+			if (!elmId && !settings && !elm) {
+				// Close all panels //
+				Object.entries(globalSettings).forEach(([key, val]) => {
+					closePanel(key, globalSettings[key]);
+				});
+
+				return false;
+			}
 
 			// Call beforeClosed method before panel is closed //
-			settings.beforeClosed.call();
+			settings.beforeClosed();
 
 			// Close Panel and adjust left/right styles //
-			$(`#${elmId}`).removeClass('open').css({
-				left: settings.slideFrom === 'right' ? 'initial' : `-${settings.width}`,
-				right: settings.slideFrom === 'left' ? 'initial' : `-${settings.width}`,
-			});
+			panelPositions(elmId, settings, 'close');
 
 			// Hide Screen //
 			$(`.slide-out-panel-screen[data-id="${elmId}"`).removeClass('open').css({
 				opacity: 0,
 				transitionDuration: `${settings.transitionDuration}s`,
 			});
+
+			if (settings.bodyPush && (settings.slideFrom === 'left' || settings.slideFrom === 'right')) {
+				$('html').css({
+					width: '100%',
+				});
+			}
 
 			setTimeout(() => {
 				// Move screen z-index back //
@@ -358,17 +281,15 @@
 				});
 
 				// Call afterClosed method after panel is closed //
-				settings.afterClosed.call();
+				settings.afterClosed();
 			}, settings.transitionDuration * 1000);
 
 			return false;
-		},
-		// ---------------------------------------------------- DESTROY PANEL //
-		destroyPanel(elmId = this.element.id, msg = false) {
-			$(`#${elmId}, .slide-out-panel-screen[data-id="${elmId}"]`).remove();
+		};
 
-			// Remove panel settings //
-			delete soSettings[elmId];
+		// ---------------------------------------------------- DESTROY PANEL //
+		const destroyPanel = (elmId, msg = false) => {
+			$(`#${elmId}, .slide-out-panel-screen[data-id="${elmId}"]`).remove();
 
 			// Check for message to log error //
 			if (msg) {
@@ -376,25 +297,21 @@
 			}
 
 			return false;
-		},
-		// ---------------------------------------------------- OPEN PANEL //
-		openPanel(elmId) {
-			const settings = soSettings[elmId];
+		};
 
+		// ---------------------------------------------------- OPEN PANEL //
+		const openPanel = (elmId = false, settings) => {
 			// Check if panel exists //
 			if (typeof settings === 'undefined') {
-				this.destroyPanel(elmId, `#${elmId} doesn't exist.`);
+				destroyPanel(elmId, `#${elmId} doesn't exist.`);
 				return false;
 			}
 
 			// Call beforeOpen method before panel is open //
-			settings.beforeOpen.call();
+			settings.beforeOpen();
 
 			// Open Panel and adjust left/right styles //
-			$(`#${elmId}`).addClass('open').css({
-				left: settings.slideFrom === 'right' ? 'initial' : 0,
-				right: settings.slideFrom === 'left' ? 'initial' : 0,
-			});
+			panelPositions(elmId, settings, 'open');
 
 			// Show Screen //
 			$(`.slide-out-panel-screen[data-id="${elmId}"]`).addClass('open').css({
@@ -403,48 +320,75 @@
 				zIndex: `${settings.screenZindex}`,
 			});
 
+			if (settings.bodyPush && (settings.slideFrom === 'left' || settings.slideFrom === 'right')) {
+				$('html').css({
+					position: 'fixed',
+					width: `calc(${$('body').width()}px - ${settings.width}`,
+				});
+			}
+
 			// Call afterOpen method after panel is opened //
 			setTimeout(() => {
-				settings.afterOpen.call();
+				settings.afterOpen();
 			}, settings.transitionDuration * 1000);
 
 			return false;
-		},
-	});
+		};
 
-	// ---------------------------------------------------- PLUGIN DEFINITION //
-	$.fn[pluginName] = function(options) {
-		// Check to see if element exists //
-		if (typeof $(this).attr('id') === 'undefined') {
-			console.error(`${pluginName}: Element not found. Element options:`, options);
+		// ---------------------------------------------------- TOGGLE PANEL //
+		const togglePanel = (elmId = false) => {
+			if ($(`#${elmId}`).hasClass('open')) {
+				closePanel(elmId, globalSettings[elmId]);
+			}
+			else {
+				openPanel(elmId, globalSettings[elmId]);
+			}
+
 			return false;
-		}
+		};
 
+		// ---------------------------------------------------- Public Functions //
 		// -------------------------- Close Panel //
 		this.close = function() {
 			const closeElemId = $(this).attr('id');
-			SlideOutPanel.prototype.closePanel(closeElemId);
+			closePanel(closeElemId, globalSettings[closeElemId]);
 		};
 
-		$('body').on('click', '.close-slide-out-panel, .slide-out-panel-screen', function() {
+		// Click to close //
+		$('body').off().on('click', '.close-slide-out-panel, .slide-out-panel-screen', function() {
 			const closeBtnElemId = $(this).attr('data-id');
-			SlideOutPanel.prototype.closePanel(closeBtnElemId, this);
+			closePanel(closeBtnElemId, globalSettings[closeBtnElemId], this);
 			return false;
+		});
+
+		// -------------------------- Escape Key to Close
+		$('body').on('keyup', e => {
+			if (e.keyCode === 27) {
+				closePanel();
+			}
 		});
 
 		// -------------------------- Destroy Panel //
 		this.destroy = () => {
 			const destroyElemId = $(this).attr('id');
-			SlideOutPanel.prototype.destroyPanel(destroyElemId);
+			destroyPanel(destroyElemId);
 		};
 
 		// -------------------------- Open Panel //
 		this.open = function() {
-			const openElemId = $(this).attr('id');
-			SlideOutPanel.prototype.openPanel(openElemId);
+      const openElemId = $(this).attr('id');
+      if (!$(`#${openElemId}`).hasClass('open')) {
+        openPanel(openElemId, globalSettings[openElemId]);
+      }
 		};
 
-		// -------------------------- Set Plugin //
+		// -------------------------- Toggle Panel //
+		this.toggle = function() {
+			const openElemId = $(this).attr('id');
+			togglePanel(openElemId, globalSettings[openElemId]);
+		};
+
+		// ---------------------------------------------------- Set Plugin //
 		return this.each(function() {
 			$.data(this, `plugin-${pluginName}-${$(this).attr('id')}`, new SlideOutPanel(this, options));
 		});

@@ -7,7 +7,7 @@ $so-close-font-size: 12px !default;
 
 $so-container-background: #fff !default;
 $so-container-box-shadow: -3px 3px 9px rgba(0, 0, 0, .3) !default;
-$so-container-transition: left ease, right ease !default;
+$so-container-transition: top ease, right ease, bottom ease, left ease !default;
 $so-container-z-index: 9999 !default;
 
 $so-content-no-header-padding-top: $pieces-padding * 2 !default;
@@ -17,6 +17,31 @@ $so-header-border-width: 1px !default;
 
 $so-content-background-color: #fff !default;
 $so-footer-background-color: #fff !default;
+
+// ---------------------------------------------------- BASE //
+html {
+	width: 100%;
+
+	&.slide-out-top {
+		bottom: initial !important;
+		top: 0;
+	}
+
+	&.slide-out-right {
+		left: 0;
+		right: initial !important;
+	}
+
+	&.slide-out-bottom {
+		bottom: 0;
+		top: initial !important;
+	}
+
+	&.slide-out-left {
+		left: initial !important;
+		right: 0;
+	}
+}
 
 // ---------------------------------------------------- SLIDE OUT PANEL //
 .slide-out-panel-container {
