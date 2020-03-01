@@ -1,6 +1,6 @@
 {
   "name": "jquery-slideoutpanel",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "jQuery SlideOutPanel",
   "main": "Gruntfile.js",
   "scripts": {
