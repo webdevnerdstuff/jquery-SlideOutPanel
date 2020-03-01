@@ -17,7 +17,7 @@
     transition: 'ease',
 		transitionDuration: '0.35s',
 		width: '350px',
-		// Methods //
+		// Events //
 		afterClosed() {},
 		afterOpen() {},
 		beforeClosed() {},
