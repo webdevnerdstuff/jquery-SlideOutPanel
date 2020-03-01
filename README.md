@@ -15,15 +15,15 @@ TBD
 ## HTML
 The html must be set up with the proper id and internal elements.
 
-Allowed tags: `<header>` `<section>` `<footer>` 
-Optional tags: `<header>` `<footer>` 
+Allowed tags: `<header>` `<section>` `<footer>`  
+Optional tags: `<header>` `<footer>`  
 
 Required tag: `<section>`
 ```html
 <div id="slide-out-panel" class="slide-out-panel">
-  <header>Panel Title</header>
-  <section>Panel content section</section>
-  <footer>Panel footer</footer>
+    <header>Panel Title</header>
+    <section>Panel content section</section>
+    <footer>Panel footer</footer>
 </div>
 ```
 
@@ -47,19 +47,19 @@ width | String | `350px` | |  Set the panels width
 
 ```javascript
 $('#slide-out-panel').SlideOutPanel({
-  bodyPush: false,
-  closeBtn: '<i class="fas fa-times"></i>',
-  closeBtnSize: '',
-  enableEscapeKey: true,
-  offsetTop: '50px',
-  screenClose:  false,
-  screenOpacity:  '1',
-  screenZindex:  '9998',
-  showScreen:  false,
-  slideFrom:  'right',
-  transition:  'ease',
-  transitionDuration:  '0.35s',
-  width:  '350px',
+    bodyPush: false,
+    closeBtn: '<i class="fas fa-times"></i>',
+    closeBtnSize: '',
+    enableEscapeKey: true,
+    offsetTop: '50px',
+    screenClose:  false,
+    screenOpacity:  '1',
+    screenZindex:  '9998',
+    showScreen:  false,
+    slideFrom:  'right',
+    transition:  'ease',
+    transitionDuration:  '0.35s',
+    width:  '350px',
 });
 ```
 
@@ -77,21 +77,21 @@ Ex.
 
 ```javascript
 $('#slide-out-panel').SlideOutPanel({
-  rendered() {
-    // Some code...
-  },
-  beforeOpen() {
-    // Some code...
-  },
-  afterOpen() {
-    // Some code...
-  },
-  beforeClosed() {
-    // Some code...
-  },
-  afterClosed() {
-    // Some code...
-  },
+    rendered() {
+      // Some code...
+    },
+    beforeOpen() {
+      // Some code...
+    },
+    afterOpen() {
+      // Some code...
+    },
+    beforeClosed() {
+      // Some code...
+    },
+    afterClosed() {
+      // Some code...
+    },
 });
 ```
 
@@ -146,37 +146,37 @@ $('#slide-out-panel').SlideOutPanel();
 Changing the direction the panel slides out from:
 ```javascript
 $('#slide-out-panel').SlideOutPanel({
-  slideFrom: 'top',
+    slideFrom: 'top',
 });
 
 $('#slide-out-panel').SlideOutPanel({
-  slideFrom: 'right',
+    slideFrom: 'right',
 });
 
 $('#slide-out-panel').SlideOutPanel({
-  slideFrom: 'bottom',
+    slideFrom: 'bottom',
 });
 
 $('#slide-out-panel').SlideOutPanel({
-  slideFrom: 'left',
+    slideFrom: 'left',
 });
 ```
 
 Close button customization:
 ```javascript
 $('#slide-out-panel').SlideOutPanel({
-  closeBtn: '<i class="fas fa-times"></i>',
-  closeBtnSize:  '18px',
+    closeBtn: '<i class="fas fa-times"></i>',
+    closeBtnSize:  '18px',
 });
 ```
 
 Background screen customization:
 ```javascript
 $('#slide-out-panel').SlideOutPanel({
-  screenClose: true,
-  screenOpacity: '0.5',
-  screenZindex: '9998',
-  showScreen: true,
+    screenClose: true,
+    screenOpacity: '0.5',
+    screenZindex: '9998',
+    showScreen: true,
 });
 ```
 
