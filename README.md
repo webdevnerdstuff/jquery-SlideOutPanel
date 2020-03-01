@@ -1,21 +1,26 @@
 
-jQuery SlideOutPanel
--------
+#jQuery SlideOutPanel
+
 
 Simple jQuery Plugin to add a sliding out panel.
 
 
-### Examples
+### Installation
 
-[Basic](https://jsfiddle.net/WebDevNerdStuff/o9pk7tdn/)
-
-
-### Package Managers
+<br>
 
 ```
 npm install --save-dev jquery-slideoutpanel
 ```
 
+
+### Demo
+
+[Basic](https://jsfiddle.net/WebDevNerdStuff/o9pk7tdn/)
+
+<br>
+
+## Usage
 
 ### HTML
 
@@ -38,22 +43,25 @@ Required tag: `<section>`
 
 ### Options
 
-Name    | Type    | Default | Options | Description
-:-----  | :------ | :-----  | :-----  | :-----
-bodyPush | boolean | false | true <br> false| Enables pushing the body when the tab opens (works with slideFrom right and left
-closeBtn | html |  `&#10005;` <br> &#10005;  | |  Add a custom close button instead of the default
-closeBtnSize | String | 12px | |  Adjust the close button size
-enableEscapeKey | Boolean | false | true <br> false |  Enables the esc key to close all panels
-offsetTop | String | 0 | |  Offset the top of the panel
-screenClose | Boolean | true | true <br> false |  Enables closing of panels by clicking on the background screen.
-screenOpacity | String | 0.5 | |  Set the background screen's opacity
-screenZindex | String | 9998 | |  Set the background screen's z-index
-showScreen | Boolean | true | true <br> false |  Enable/Disable showing the background screen
-slideFrom | String | right | top <br> right <br> bottom <br> left |  Set to choose where the panel should slide out from
-transition | String | ease | | Set the transition-timing-function. Accepts the standard values used with CSS.
-transitionDuration | String | 0.35s |  | Set the duration of the transitions. Adding "s" is optional.
-width | String | 350px | |  Set the panels width
+<br>
 
+Name                | Type    | Default | Options | Description
+:-----              | :------ | :-----  | :-----  | :-----
+bodyPush            | boolean | false   | true <br> false| Enables pushing the body when the tab opens (works with slideFrom right and left
+closeBtn            | html    |  `&#10005;` <br> &#10005;  | |  Add a custom close button instead of the default
+closeBtnSize        | String  | 12px    | |  Adjust the close button size
+enableEscapeKey     | Boolean | false   | true <br> false |  Enables the esc key to close all panels
+offsetTop           | String  | 0       | |  Offset the top of the panel
+screenClose         | Boolean | true    | true <br> false |  Enables closing of panels by clicking on the background screen.
+screenOpacity       | String  | 0.5     | |  Set the background screen's opacity
+screenZindex        | String  | 9998    | |  Set the background screen's z-index
+showScreen          | Boolean | true    | true <br> false |  Enable/Disable showing the background screen
+slideFrom           | String  | right   | top <br> right <br> bottom <br> left |  Set to choose where the panel should slide out from
+transition          | String  | ease    | | Set the transition-timing-function. Accepts the standard values used with CSS.
+transitionDuration  | String  | 0.35s   | | Set the duration of the transitions. Adding "s" is optional.
+width               | String  | 350px   | |  Set the panels width
+
+<br>
 
 ```javascript
 $('#slide-out-panel').SlideOutPanel({
@@ -76,6 +84,8 @@ $('#slide-out-panel').SlideOutPanel({
 
 ### Events
 
+<br>
+
 Name          | Description
 :-----        | :-----
 rendered      | Fired after the panel is finished building
@@ -84,6 +94,7 @@ afterOpen     | Fired after panel has opened
 beforeClosed  | Fired before panel is closed
 afterClosed   | Fired after the panel is closed
 
+<br>
 
 ```javascript
 $('#slide-out-panel').SlideOutPanel({
@@ -105,7 +116,10 @@ $('#slide-out-panel').SlideOutPanel({
 });
 ```
 
+
 ### Methods
+
+<br>
 
 Name    | Description
 :-----  | :-----
@@ -114,6 +128,7 @@ close   | Closes the panel
 toggle  | Toggles the panel open/close
 destroy | Removes the panel from the DOM
 
+<br>
 
 ```javascript
 const slideOutPanel = $('#slide-out-panel').SlideOutPanel();
@@ -130,25 +145,28 @@ slideOutPanel.destroy();
 
 ### Sass Variables
 
-Variable    | Type    | Default   | Description
-:-----      | :-----  | :-----    | :-----
-$pieces-padding | string | `15px` | Padding for the panel pieces (header, section, footer)
-$so-screen-sm | | `768px` | Responsive breakpoint
-$so-close-btn-color |  | `#000` | Color of the close button
-$so-close-font-size |  | `12px` | Font size of the close button
-$so-container-background | | `#fff` | The panel background color
-$so-container-box-shadow | | `-3px 3px 9px rgba(0, 0, 0, .3)` | The panel box shadow
-$so-container-transition | | `top  ease, right  ease, bottom  ease, left  ease` |
-$so-container-z-index | | `9999` | The panel z-index
-$so-content-no-header-padding-top | | `$pieces-padding  * 2` | The top padding of the `<section>` when there is no header
-$so-header-background-color | | `#fff` | The header background color
-$so-header-border-color | | `#e5e5e5` | The header bottom border color
-$so-header-border-width | | `1px` | The header border width
-$so-content-background-color | | `#fff` | The `<section>` background color
-$so-footer-background-color | | `#fff` | The `<footer>` background color
+<br>
 
+Variable                      | Type    | Default   | Description
+:-----                        | :-----  | :-----    | :-----
+$pieces-padding               | string  | 15px      | Padding for the panel pieces (header, section, footer)
+$so-screen-sm                 |         | 768px     | Responsive breakpoint
+$so-close-btn-color           |         | #000      | Color of the close button
+$so-close-font-size           |         | 12px      | Font size of the close button
+$so-container-background      |         | #fff      | The panel background color
+$so-container-box-shadow      |         | -3px 3px 9px rgba(0, 0, 0, .3) | The panel box shadow
+$so-container-transition      |         | top ease, right ease, bottom ease, left ease |
+$so-container-z-index         |         | 9999      | The panel z-index
+$so-content-no-header-padding-top |     | $pieces-padding  * 2 | The top padding of the `<section>` when there is no header
+$so-header-background-color   |          | #fff     | The header background color
+$so-header-border-color       |          | #e5e5e5  | The header bottom border color
+$so-header-border-width       |          | 1px      | The header border width
+$so-content-background-color  |          | #fff     | The `<section>` background color
+$so-footer-background-color   |          | #fff     | The `<footer>` background color
 
-### Examples
+<br>
+
+## Examples
 
 Initialize plugin:
 ```javascript
@@ -192,14 +210,17 @@ $('#slide-out-panel').SlideOutPanel({
 });
 ```
 
+<br>
 
-### Dependencies
+## Dependencies
 
 jQuery
 
+<br>
 
-### License
+## License
 
-Copyright (c) 2020 WebDevNerdStuff
-
+Copyright (c) 2020 WebDevNerdStuff  
 Licensed under the MIT license.
+
+[![@WebDevNerdStuff](https://img.shields.io/badge/github-webdevnerdstuff-brightgreen.svg)](https://github.com/webdevnerdstuff)
