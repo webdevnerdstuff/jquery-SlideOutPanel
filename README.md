@@ -30,7 +30,7 @@ Required tag: `<section>`
 ## Options
 
 <table>
-  <thead>
+  <tbody>
     <tr>
       <th>Name</th>
       <th>Type</th>
@@ -38,8 +38,6 @@ Required tag: `<section>`
       <th width="200">Options</th>
       <th>Description</th>
     </tr>
-  </thead>
-  <tbody>
     <tr>
       <td>bodyPush</td>
       <td>boolean</td>
@@ -208,8 +206,8 @@ slideOutPanel.destroy();
 
 ## Sass Variables
 
-Variable  | Type  | Default   | Description
---------- | ----- | --------  | ------------
+Variable    | Type    | Default     | Description
+:---------  | :-----  | :--------   | :------------
 $pieces-padding | string | `15px` | Padding for the panel pieces (header, section, footer)
 $so-screen-sm | | `768px` | Responsive breakpoint
 $so-close-btn-color |  | `#000` | Color of the close button
