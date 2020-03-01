@@ -29,8 +29,8 @@ Required tag: `<section>`
 
 ## Options
 
-Name    | Type | Default  | Options     | Description
-------  | ---- | ----     | ----------- | -----------
+Name    | Type | Default  | Options <div style="width: 100px;"></div> | Description
+------  | ---- | ----     | ------- | -----------
 bodyPush | boolean | false | true <br> false | Enables pushing the body when the tab opens (works with slideFrom right and left
 closeBtn | html |  `&#10005;` <br> &#10005;  | |  Add a custom close button instead of the default
 closeBtnSize | String | `12px` | |  Adjust the close button size
