@@ -41,7 +41,7 @@ screenOpacity | String | `0.5` | |  Set the background screen's opacity
 screenZindex | String | `9998` | |  Set the background screen's z-index
 showScreen | Boolean | true | true <br> false |  Enable/Disable showing the background screen
 slideFrom | String | `right` | top <br> right <br> bottom <br> left |  Set to choose where the panel should slide out from
-transition | String | `ease` | ease <br> linear <br> ease-in <br> ease-out <br> ease-in-out <br> step-start <br> step-end <br> steps <br> cubic-bezier <br> initial <br> inherit | Set the transitions type
+transition | String | `ease` | `ease` <br> `linear` <br> `ease-in` <br> `ease-out` <br> `ease-in-out` <br> `step-start` <br> `step-end` <br> `steps` <br> `cubic-bezier` <br> `initial` <br> `inherit` | Set the transitions type
 transitionDuration | String | `0.35s` |  | Set the duration of the transitions. Adding "s" is optional.
 width | String | `350px` | |  Set the panels width
 
