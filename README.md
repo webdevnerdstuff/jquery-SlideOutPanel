@@ -35,7 +35,7 @@ Required tag: `<section>`
       <th>Name</th>
       <th>Type</th>
       <th>Default</th>
-      <th style="width: 200px;">Options</th>
+      <th width="200">Options</th>
       <th>Description</th>
     </tr>
   </thead>
@@ -154,13 +154,13 @@ $('#slide-out-panel').SlideOutPanel({
 
 ## Events
 
-Name            | Description
------           | ------------
-`rendered`      | Fired after the panel is finished building
-`beforeOpen`    | Fired before panel opens
-`afterOpen`     | Fired after panel has opened
-`beforeClosed`  | Fired before panel is closed
-`afterClosed`   | Fired after the panel is closed
+Name | Description
+----- | ------------
+`rendered` | Fired after the panel is finished building
+`beforeOpen` | Fired before panel opens
+`afterOpen` | Fired after panel has opened
+`beforeClosed` | Fired before panel is closed
+`afterClosed` | Fired after the panel is closed
 
 Ex.
 
