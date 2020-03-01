@@ -29,14 +29,19 @@ Required tag: `<section>`
 
 ## Options
 
+<style>
+  table tr:first-child { font-weight: bold; }
+  table tr td:nth-child(3) { width: 200px; }
+</style>
+
 <table>
   <tbody>
     <tr>
-      <td><strong>Name</strong></td>
-      <td><strong>Type</strong></td>
-      <td><strong>Default</strong></td>
-      <td width="200"><strong>Options</strong></td>
-      <td><strong>Description</strong></td>
+      <td>Name</td>
+      <td>type</td>
+      <td>Default</td>
+      <td>Options</td>
+      <td>Description</td>
     </tr>
     <tr>
       <td>bodyPush</td>
