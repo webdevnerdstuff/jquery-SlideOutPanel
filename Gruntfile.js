@@ -1,4 +1,3 @@
-const path = require('path');
 const sass = require('node-sass');
 
 module.exports = grunt => {
@@ -145,7 +144,7 @@ module.exports = grunt => {
 			},
 			javascript: {
 				files: ['src/**/*.js'],
-				tasks: ['eslint', 'clean:temp', 'babel', 'copy', 'uglify', 'clean:temp'],
+				tasks: ['eslint', 'clean:temp', 'babel', 'uglify', 'clean:temp'],
 			},
 			scss: {
 				files: ['src/**/*.scss'],
