@@ -29,10 +29,7 @@ Required tag: `<section>`
 
 ## Options
 
-<style>
-  table tr:first-child { font-weight: bold; }
-  table tr td:nth-child(3) { width: 200px; }
-</style>
+css: table tr:first-child { font-weight: bold; } table tr td:nth-child(3) { width: 200px; }
 
 <table>
   <tbody>
