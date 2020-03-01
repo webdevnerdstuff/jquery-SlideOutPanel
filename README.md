@@ -1,5 +1,6 @@
 
-#jQuery SlideOutPanel
+jQuery SlideOutPanel
+-------
 
 
 Simple jQuery Plugin to add a sliding out panel.
@@ -7,7 +8,6 @@ Simple jQuery Plugin to add a sliding out panel.
 
 ### Installation
 
-<br>
 
 ```
 npm install --save-dev jquery-slideoutpanel
@@ -216,7 +216,6 @@ $('#slide-out-panel').SlideOutPanel({
 
 jQuery
 
-<br>
 
 ## License
 
