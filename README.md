@@ -29,9 +29,9 @@ Required tag: `<section>`
 
 ## Options
 
-Name    | Type    | Default   | Options              | Description
-:-----  | :-----  | :-------- | :------------------- | :------------
-bodyPush | boolean | false | true <br> false         | Enables pushing the body when the tab opens (works with slideFrom right and left
+Name    | Type    | Default | Options | Description
+:-----  | :------ | :-----  | :-----  | :-----
+bodyPush | boolean | false | true <br> false| Enables pushing the body when the tab opens (works with slideFrom right and left
 closeBtn | html |  `&#10005;` <br> &#10005;  | |  Add a custom close button instead of the default
 closeBtnSize | String | `12px` | |  Adjust the close button size
 enableEscapeKey | Boolean | false | true <br> false |  Enables the esc key to close all panels
@@ -41,7 +41,7 @@ screenOpacity | String | `0.5` | |  Set the background screen's opacity
 screenZindex | String | `9998` | |  Set the background screen's z-index
 showScreen | Boolean | true | true <br> false |  Enable/Disable showing the background screen
 slideFrom | String | `right` | top <br> right <br> bottom <br> left |  Set to choose where the panel should slide out from
-transition | String | `ease` | `ease` <br> `linear` <br> `ease-in` <br> `ease-out` <br> `ease-in-out` <br> `step-start` <br> `step-end` <br> `steps` <br> `cubic-bezier` <br> `initial` <br> `inherit` | Set the transitions type
+transition | String | `ease` | | Set the transition-timing-function. Accepts the standard values used with CSS.
 transitionDuration | String | `0.35s` |  | Set the duration of the transitions. Adding "s" is optional.
 width | String | `350px` | |  Set the panels width
 
@@ -66,7 +66,7 @@ $('#slide-out-panel').SlideOutPanel({
 ## Events
 
 Name            | Description
-:-----          | :------------
+:-----          | :-----
 `rendered`      | Fired after the panel is finished building
 `beforeOpen`    | Fired before panel opens
 `afterOpen`     | Fired after panel has opened
@@ -98,7 +98,7 @@ $('#slide-out-panel').SlideOutPanel({
 ## Methods
 
 Name      | Description
-:-----    | :------------
+:-----    | :-----
 `open`    | Open's the panel
 `close`   | Closes the panel
 `toggle`  | Toggles the panel open/close
@@ -120,7 +120,7 @@ slideOutPanel.destroy();
 ## Sass Variables
 
 Variable    | Type    | Default   | Description
-:---------  | :-----  | :-------- | :------------
+:-----      | :-----  | :-----    | :-----
 $pieces-padding | string | `15px` | Padding for the panel pieces (header, section, footer)
 $so-screen-sm | | `768px` | Responsive breakpoint
 $so-close-btn-color |  | `#000` | Color of the close button
