@@ -29,21 +29,110 @@ Required tag: `<section>`
 
 ## Options
 
-Name    | Type | Default  | Options <div style="width: 100px;"></div> | Description
-------  | ---- | ----     | ------- | -----------
-bodyPush | boolean | false | true <br> false | Enables pushing the body when the tab opens (works with slideFrom right and left
-closeBtn | html |  `&#10005;` <br> &#10005;  | |  Add a custom close button instead of the default
-closeBtnSize | String | `12px` | |  Adjust the close button size
-enableEscapeKey | Boolean | false | true <br> false |  Enables the esc key to close all panels
-offsetTop | String | `0` | |  Offset the top of the panel
-screenClose | Boolean | true | true <br> false |  Enables closing of panels by clicking on the background screen.
-screenOpacity | String | `0.5` | |  Set the background screen's opacity
-screenZindex | String | `9998` | |  Set the background screen's z-index
-showScreen | Boolean | true | true <br> false |  Enable/Disable showing the background screen
-slideFrom | String | `right` | top <br> right <br> bottom <br> left |  Set to choose where the panel should slide out from
-transition | String | `ease` | ease <br> linear <br> ease-in <br> ease-out <br> ease-in-out <br> step-start <br> step-end <br> steps <br> cubic-bezier <br> initial <br> inherit | Set the transitions type
-transitionDuration | String | `0.35s` |  | Set the duration of the transitions. Adding "s" is optional.
-width | String | `350px` | |  Set the panels width
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Default</th>
+      <th style="width: 200px;">Options</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>bodyPush</td>
+      <td>boolean</td>
+      <td>false</td>
+      <td>true <br> false </td>
+      <td>Enables pushing the body when the tab opens (works with slideFrom right and left</td>
+    </tr>
+    <tr>
+      <td>closeBtn</td>
+      <td>html</td>
+      <td>`&#10005;` <br> &#10005;</td>
+      <td></td>
+      <td>Add a custom close button instead of the default</td>
+    </tr>
+    <tr>
+      <td>closeBtnSize</td>
+      <td>String</td>
+      <td>`12px`</td>
+      <td></td>
+      <td>Adjust the close button text size</td>
+    </tr>
+    <tr>
+      <td>enableEscapeKey |  |  |  |  </td>
+      <td>Boolean</td>
+      <td>false</td>
+      <td>true <br> false</td>
+      <td>Enables the `esc` key to close all panels</td>
+    </tr>
+    <tr>
+      <td>offsetTop</td>
+      <td>String</td>
+      <td>`0`</td>
+      <td></td>
+      <td>Offset the top of the panel</td>
+    </tr>
+    <tr>
+      <td>screenClose</td>
+      <td>Boolean</td>
+      <td>true</td>
+      <td>true <br> false</td>
+      <td>Enables closing of panels by clicking on the background screen.</td>
+    </tr>
+    <tr>
+      <td>screenOpacity</td>
+      <td>String</td>
+      <td>`0.5`</td>
+      <td></td>
+      <td>Set the background screen's opacity</td>
+    </tr>
+    <tr>
+      <td>screenZindex</td>
+      <td>String</td>
+      <td>`9998`</td>
+      <td></td>
+      <td>Set the background screen's z-index</td>
+    </tr>
+    <tr>
+      <td>showScreen</td>
+      <td>Boolean</td>
+      <td>true</td>
+      <td>true <br> false</td>
+      <td>Enable/Disable showing the background screen</td>
+    </tr>
+    <tr>
+      <td>slideFrom</td>
+      <td>String</td>
+      <td>`right`</td>
+      <td>top <br> right <br> bottom <br> left</td>
+      <td>Set to choose where the panel should slide out from</td>
+    </tr>
+    <tr>
+      <td>transition</td>
+      <td>String</td>
+      <td>`ease` </td>
+      <td>ease <br> linear <br> ease-in <br> ease-out <br> ease-in-out <br> step-start <br> step-end <br> steps <br> cubic-bezier <br> initial <br> inherit</td>
+      <td>Set the transitions type</td>
+    </tr>
+    <tr>
+      <td>transitionDuration</td>
+      <td>String</td>
+      <td>`0.35s`</td>
+      <td></td>
+      <td>Set the duration of the transitions. Adding "s" is optional.</td>
+    </tr>
+    <tr>
+      <td>width</td>
+      <td>String</td>
+      <td>`350px`</td>
+      <td></td>
+      <td>Set the panels width</td>
+    </tr>
+  </tbody>
+</table>
 
 ```javascript
 $('#slide-out-panel').SlideOutPanel({
@@ -66,7 +155,7 @@ $('#slide-out-panel').SlideOutPanel({
 ## Events
 
 Name            | Description
-------          | -----------
+-----           | ------------
 `rendered`      | Fired after the panel is finished building
 `beforeOpen`    | Fired before panel opens
 `afterOpen`     | Fired after panel has opened
@@ -98,7 +187,7 @@ $('#slide-out-panel').SlideOutPanel({
 ## Methods
 
 Name      | Description
-------    | -----------
+-----     | ------------
 `open`    | Open's the panel
 `close`   | Closes the panel
 `toggle`  | Toggles the panel open/close
@@ -119,8 +208,8 @@ slideOutPanel.destroy();
 
 ## Sass Variables
 
-Variable  | Type | Default | Description
-------    | ---- | ------- | -----------
+Variable  | Type  | Default   | Description
+--------- | ----- | --------  | ------------
 $pieces-padding | string | `15px` | Padding for the panel pieces (header, section, footer)
 $so-screen-sm | | `768px` | Responsive breakpoint
 $so-close-btn-color |  | `#000` | Color of the close button
