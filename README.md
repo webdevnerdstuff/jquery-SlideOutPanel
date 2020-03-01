@@ -187,7 +187,7 @@ $('#slide-out-panel').SlideOutPanel({
 ## Methods
 
 Name      | Description
------     | ------------
+:-----    | :------------
 `open`    | Open's the panel
 `close`   | Closes the panel
 `toggle`  | Toggles the panel open/close
