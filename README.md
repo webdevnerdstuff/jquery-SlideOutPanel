@@ -10,7 +10,9 @@ Simple jQuery Plugin to add a sliding out panel.
 
 #### Package Managers
 
-TBD
+```
+npm install --save-dev jquery-slideoutpanel
+```
 
 ## HTML
 The html must be set up with the proper id and internal elements.
