@@ -65,13 +65,13 @@ $('#slide-out-panel').SlideOutPanel({
 
 ## Events
 
-Name            | Description
-:-----          | :-----
-`rendered`      | Fired after the panel is finished building
-`beforeOpen`    | Fired before panel opens
-`afterOpen`     | Fired after panel has opened
-`beforeClosed`  | Fired before panel is closed
-`afterClosed`   | Fired after the panel is closed
+Name          | Description
+:-----        | :-----
+rendered      | Fired after the panel is finished building
+beforeOpen    | Fired before panel opens
+afterOpen     | Fired after panel has opened
+beforeClosed  | Fired before panel is closed
+afterClosed   | Fired after the panel is closed
 
 Ex.
 
@@ -97,12 +97,12 @@ $('#slide-out-panel').SlideOutPanel({
 
 ## Methods
 
-Name      | Description
-:-----    | :-----
-`open`    | Open's the panel
-`close`   | Closes the panel
-`toggle`  | Toggles the panel open/close
-`destroy` | Removes the panel from the DOM
+Name    | Description
+:-----  | :-----
+open    | Open's the panel
+close   | Closes the panel
+toggle  | Toggles the panel open/close
+destroy | Removes the panel from the DOM
 
 Ex.
 ```javascript
