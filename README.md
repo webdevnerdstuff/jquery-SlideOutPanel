@@ -29,14 +29,14 @@ Required tag: `<section>`
 
 ## Options
 
-<table align="left">
+<table>
   <tbody>
     <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th width="200">Options</th>
-      <th>Description</th>
+      <td><strong>Name</strong></td>
+      <td><strong>Type</strong></td>
+      <td><strong>Default</strong></td>
+      <td width="200"><strong>Options</strong></td>
+      <td><strong>Description</strong></td>
     </tr>
     <tr>
       <td>bodyPush</td>
