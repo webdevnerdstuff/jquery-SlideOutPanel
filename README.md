@@ -4,23 +4,29 @@ jQuery SlideOutPanel
 
 Simple jQuery Plugin to add a sliding out panel.
 
-#### Examples
+
+### Examples
 
 [Basic](https://jsfiddle.net/WebDevNerdStuff/o9pk7tdn/)
 
-#### Package Managers
+
+### Package Managers
 
 ```
 npm install --save-dev jquery-slideoutpanel
 ```
 
-## HTML
+
+### HTML
+
 The html must be set up with the proper id and internal elements.
 
-Allowed tags: `<header>` `<section>` `<footer>`  
-Optional tags: `<header>` `<footer>`  
+Allowed tags: `<header>` `<section>` `<footer>`
+
+Optional tags: `<header>` `<footer>`
 
 Required tag: `<section>`
+
 ```html
 <div id="slide-out-panel" class="slide-out-panel">
     <header>Panel Title</header>
@@ -29,23 +35,25 @@ Required tag: `<section>`
 </div>
 ```
 
-## Options
+
+### Options
 
 Name    | Type    | Default | Options | Description
 :-----  | :------ | :-----  | :-----  | :-----
 bodyPush | boolean | false | true <br> false| Enables pushing the body when the tab opens (works with slideFrom right and left
 closeBtn | html |  `&#10005;` <br> &#10005;  | |  Add a custom close button instead of the default
-closeBtnSize | String | `12px` | |  Adjust the close button size
+closeBtnSize | String | 12px | |  Adjust the close button size
 enableEscapeKey | Boolean | false | true <br> false |  Enables the esc key to close all panels
-offsetTop | String | `0` | |  Offset the top of the panel
+offsetTop | String | 0 | |  Offset the top of the panel
 screenClose | Boolean | true | true <br> false |  Enables closing of panels by clicking on the background screen.
-screenOpacity | String | `0.5` | |  Set the background screen's opacity
-screenZindex | String | `9998` | |  Set the background screen's z-index
+screenOpacity | String | 0.5 | |  Set the background screen's opacity
+screenZindex | String | 9998 | |  Set the background screen's z-index
 showScreen | Boolean | true | true <br> false |  Enable/Disable showing the background screen
-slideFrom | String | `right` | top <br> right <br> bottom <br> left |  Set to choose where the panel should slide out from
-transition | String | `ease` | | Set the transition-timing-function. Accepts the standard values used with CSS.
-transitionDuration | String | `0.35s` |  | Set the duration of the transitions. Adding "s" is optional.
-width | String | `350px` | |  Set the panels width
+slideFrom | String | right | top <br> right <br> bottom <br> left |  Set to choose where the panel should slide out from
+transition | String | ease | | Set the transition-timing-function. Accepts the standard values used with CSS.
+transitionDuration | String | 0.35s |  | Set the duration of the transitions. Adding "s" is optional.
+width | String | 350px | |  Set the panels width
+
 
 ```javascript
 $('#slide-out-panel').SlideOutPanel({
@@ -65,7 +73,8 @@ $('#slide-out-panel').SlideOutPanel({
 });
 ```
 
-## Events
+
+### Events
 
 Name          | Description
 :-----        | :-----
@@ -75,7 +84,6 @@ afterOpen     | Fired after panel has opened
 beforeClosed  | Fired before panel is closed
 afterClosed   | Fired after the panel is closed
 
-Ex.
 
 ```javascript
 $('#slide-out-panel').SlideOutPanel({
@@ -97,7 +105,7 @@ $('#slide-out-panel').SlideOutPanel({
 });
 ```
 
-## Methods
+### Methods
 
 Name    | Description
 :-----  | :-----
@@ -106,7 +114,7 @@ close   | Closes the panel
 toggle  | Toggles the panel open/close
 destroy | Removes the panel from the DOM
 
-Ex.
+
 ```javascript
 const slideOutPanel = $('#slide-out-panel').SlideOutPanel();
 
@@ -119,7 +127,8 @@ slideOutPanel.toggle();
 slideOutPanel.destroy();
 ```
 
-## Sass Variables
+
+### Sass Variables
 
 Variable    | Type    | Default   | Description
 :-----      | :-----  | :-----    | :-----
@@ -138,7 +147,8 @@ $so-header-border-width | | `1px` | The header border width
 $so-content-background-color | | `#fff` | The `<section>` background color
 $so-footer-background-color | | `#fff` | The `<footer>` background color
 
-## Examples
+
+### Examples
 
 Initialize plugin:
 ```javascript
@@ -182,11 +192,13 @@ $('#slide-out-panel').SlideOutPanel({
 });
 ```
 
-## Dependencies
+
+### Dependencies
 
 jQuery
 
-## License
+
+### License
 
 Copyright (c) 2020 WebDevNerdStuff
 

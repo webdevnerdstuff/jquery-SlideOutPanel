@@ -1,12 +1,12 @@
 {
   "name": "jquery-slideoutpanel",
-  "version": "1.0.1",
-  "description": "jQuery SlideOutPanel",
+  "version": "1.0.3",
+  "description": "jQuery SlideOutPanel is a jQuery Plugin to add a sliding out panel.",
   "main": "Gruntfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "WebDevNerdStuff & Bunnies... lots and lots of bunnies!",
+  "author": "WebDevNerdStuff & Bunnies... lots and lots of bunnies! (https://webdevnerdstuff.com)",
   "licenses": [
     {
       "type": "MIT",
@@ -21,6 +21,16 @@
     "url": "https://github.com/webdevnerdstuff/jquery-SlideOutPanel/issues"
   },
   "homepage": "https://github.com/webdevnerdstuff/jquery-SlideOutPanel#readme",
+  "keywords": [
+    "slideOutPanel",
+    "slide-out-panel",
+    "slide out panel",
+    "slide_out_panel",
+    "slide",
+    "out",
+    "panel",
+    "jQuery"
+  ],
   "devDependencies": {
     "@babel/core": "^7.8.6",
     "@babel/preset-env": "^7.8.6",
