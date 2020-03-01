@@ -52,14 +52,14 @@ $('#slide-out-panel').SlideOutPanel({
     closeBtnSize: '',
     enableEscapeKey: true,
     offsetTop: '50px',
-    screenClose:  false,
-    screenOpacity:  '1',
+    screenClose: false,
+    screenOpacity: '1',
     screenZindex:  '9998',
-    showScreen:  false,
-    slideFrom:  'right',
-    transition:  'ease',
-    transitionDuration:  '0.35s',
-    width:  '350px',
+    showScreen: false,
+    slideFrom: 'right',
+    transition: 'ease',
+    transitionDuration: '0.35s',
+    width: '350px',
 });
 ```
 
@@ -166,7 +166,7 @@ Close button customization:
 ```javascript
 $('#slide-out-panel').SlideOutPanel({
     closeBtn: '<i class="fas fa-times"></i>',
-    closeBtnSize:  '18px',
+    closeBtnSize: '18px',
 });
 ```
 
