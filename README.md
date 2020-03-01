@@ -6,7 +6,6 @@ Simple jQuery Plugin to add a sliding out panel.
 
 #### Examples
 
-TBD
 [Basic](https://jsfiddle.net/WebDevNerdStuff/o9pk7tdn/)
 
 #### Package Managers
@@ -16,23 +15,23 @@ TBD
 ## HTML
 The html must be set up with the proper id and internal elements.
 
-Allowed tags: `<header>` `<section>` `<footer>`
-Optional tags: `<header>` `<footer>`
+Allowed tags: `<header>` `<section>` `<footer>`  
+Optional tags: `<header>` `<footer>`  
 
 Required tag: `<section>`
 ```html
 <div id="slide-out-panel" class="slide-out-panel">
-	<header>Panel Title</header>
-	<section>Panel content section</section>
-	<footer>Panel footer</footer>
+    <header>Panel Title</header>
+    <section>Panel content section</section>
+    <footer>Panel footer</footer>
 </div>
 ```
 
 ## Options
 
-Name    | Type | Default  | Options | Description
-------  | ---- | ----     | ------- | -----------
-bodyPush | boolean | false | true <br> false | Enables pushing the body when the tab opens (works with slideFrom right and left
+Name    | Type    | Default | Options | Description
+:-----  | :------ | :-----  | :-----  | :-----
+bodyPush | boolean | false | true <br> false| Enables pushing the body when the tab opens (works with slideFrom right and left
 closeBtn | html |  `&#10005;` <br> &#10005;  | |  Add a custom close button instead of the default
 closeBtnSize | String | `12px` | |  Adjust the close button size
 enableEscapeKey | Boolean | false | true <br> false |  Enables the esc key to close all panels
@@ -42,68 +41,68 @@ screenOpacity | String | `0.5` | |  Set the background screen's opacity
 screenZindex | String | `9998` | |  Set the background screen's z-index
 showScreen | Boolean | true | true <br> false |  Enable/Disable showing the background screen
 slideFrom | String | `right` | top <br> right <br> bottom <br> left |  Set to choose where the panel should slide out from
-transition | String | `ease` | ease <br> linear <br> ease-in <br> ease-out <br> ease-in-out <br> step-start <br> step-end <br> steps <br> cubic-bezier <br> initial <br> inherit | Set the transitions type
+transition | String | `ease` | | Set the transition-timing-function. Accepts the standard values used with CSS.
 transitionDuration | String | `0.35s` |  | Set the duration of the transitions. Adding "s" is optional.
 width | String | `350px` | |  Set the panels width
 
 ```javascript
 $('#slide-out-panel').SlideOutPanel({
-	bodyPush: false,
-	closeBtn: '<i class="fas fa-times"></i>',
-	closeBtnSize: '',
-	enableEscapeKey: true,
-	offsetTop: '50px',
-	screenClose:  false,
-	screenOpacity:  '1',
-	screenZindex:  '9998',
-	showScreen:  false,
-	slideFrom:  'right',
-	transition:  'ease',
-	transitionDuration:  '0.35s',
-	width:  '350px',
+    bodyPush: false,
+    closeBtn: '<i class="fas fa-times"></i>',
+    closeBtnSize: '',
+    enableEscapeKey: true,
+    offsetTop: '50px',
+    screenClose:  false,
+    screenOpacity:  '1',
+    screenZindex:  '9998',
+    showScreen:  false,
+    slideFrom:  'right',
+    transition:  'ease',
+    transitionDuration:  '0.35s',
+    width:  '350px',
 });
 ```
 
 ## Events
 
-Name            | Description
-------          | -----------
-`rendered`      | Fired after the panel is finished building
-`beforeOpen`    | Fired before panel opens
-`afterOpen`     | Fired after panel has opened
-`beforeClosed`  | Fired before panel is closed
-`afterClosed`   | Fired after the panel is closed
+Name          | Description
+:-----        | :-----
+rendered      | Fired after the panel is finished building
+beforeOpen    | Fired before panel opens
+afterOpen     | Fired after panel has opened
+beforeClosed  | Fired before panel is closed
+afterClosed   | Fired after the panel is closed
 
 Ex.
 
 ```javascript
 $('#slide-out-panel').SlideOutPanel({
-	rendered() {
-		// Some code...
-	},
-	beforeOpen() {
-		// Some code...
-	},
-	afterOpen() {
-		// Some code...
-	},
-	beforeClosed() {
-		// Some code...
-	},
-	afterClosed() {
-		// Some code...
-	},
+    rendered() {
+      // Some code...
+    },
+    beforeOpen() {
+      // Some code...
+    },
+    afterOpen() {
+      // Some code...
+    },
+    beforeClosed() {
+      // Some code...
+    },
+    afterClosed() {
+      // Some code...
+    },
 });
 ```
 
 ## Methods
 
-Name      | Description
-------    | -----------
-`open`    | Open's the panel
-`close`   | Closes the panel
-`toggle`  | Toggles the panel open/close
-`destroy` | Removes the panel from the DOM
+Name    | Description
+:-----  | :-----
+open    | Open's the panel
+close   | Closes the panel
+toggle  | Toggles the panel open/close
+destroy | Removes the panel from the DOM
 
 Ex.
 ```javascript
@@ -120,8 +119,8 @@ slideOutPanel.destroy();
 
 ## Sass Variables
 
-Variable  | Type | Default | Description
-------    | ---- | ------- | -----------
+Variable    | Type    | Default   | Description
+:-----      | :-----  | :-----    | :-----
 $pieces-padding | string | `15px` | Padding for the panel pieces (header, section, footer)
 $so-screen-sm | | `768px` | Responsive breakpoint
 $so-close-btn-color |  | `#000` | Color of the close button
@@ -147,37 +146,37 @@ $('#slide-out-panel').SlideOutPanel();
 Changing the direction the panel slides out from:
 ```javascript
 $('#slide-out-panel').SlideOutPanel({
-	slideFrom: 'top',
+    slideFrom: 'top',
 });
 
 $('#slide-out-panel').SlideOutPanel({
-	slideFrom: 'right',
+    slideFrom: 'right',
 });
 
 $('#slide-out-panel').SlideOutPanel({
-	slideFrom: 'bottom',
+    slideFrom: 'bottom',
 });
 
 $('#slide-out-panel').SlideOutPanel({
-	slideFrom: 'left',
+    slideFrom: 'left',
 });
 ```
 
 Close button customization:
 ```javascript
 $('#slide-out-panel').SlideOutPanel({
-	closeBtn: '<i class="fas fa-times"></i>',
-	closeBtnSize:  '18px',
+    closeBtn: '<i class="fas fa-times"></i>',
+    closeBtnSize:  '18px',
 });
 ```
 
 Background screen customization:
 ```javascript
 $('#slide-out-panel').SlideOutPanel({
-	screenClose: true,
-	screenOpacity: '0.5',
-	screenZindex: '9998',
-	showScreen: true,
+    screenClose: true,
+    screenOpacity: '0.5',
+    screenZindex: '9998',
+    showScreen: true,
 });
 ```
 
