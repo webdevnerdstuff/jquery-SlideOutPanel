@@ -216,6 +216,7 @@ $('#slide-out-panel').SlideOutPanel({
 
 jQuery
 
+<br>
 
 ## License
 
