@@ -2,6 +2,7 @@
 jQuery SlideOutPanel
 -------
 
+[![NPM_PACKAGE](https://img.shields.io/badge/NPM%20-Package-%23cb3837)](https://www.npmjs.com/package/jquery-slideoutpanel)
 
 Simple jQuery Plugin to add a sliding out panel.
 
