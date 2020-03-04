@@ -4,7 +4,7 @@
 	// Create the defaults once //
 	const defaults = {
 		// Options //
-		bodyPush: true,
+		bodyPush: false,
 		closeBtn: '&#10005;',
 		closeBtnSize: '',
 		enableEscapeKey: false,
