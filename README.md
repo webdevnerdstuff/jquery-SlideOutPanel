@@ -48,6 +48,7 @@ Required tag: `<section>`
 Name                | Type    | Default | Options | Description
 :-----              | :------ | :-----  | :-----  | :-----
 bodyPush            | boolean | false   | true <br> false| Enables pushing the body when the tab opens (works with slideFrom right and left
+breakpoint          | String  | 768px   | | Sets the breakpoint (matches the breakpoint in SCSS/CSS). This is used when bodyPush is true
 closeBtn            | html    |  `&#10005;` <br> &#10005;  | |  Add a custom close button instead of the default
 closeBtnSize        | String  | 12px    | |  Adjust the close button size
 enableEscapeKey     | Boolean | false   | true <br> false |  Enables the esc key to close all panels
@@ -220,7 +221,7 @@ jQuery
 
 ## License
 
-Copyright (c) 2020 WebDevNerdStuff  
+Copyright (c) 2020 WebDevNerdStuff
 Licensed under the MIT license.
 
 [![@WebDevNerdStuff](https://img.shields.io/badge/github-webdevnerdstuff-brightgreen.svg)](https://github.com/webdevnerdstuff)
