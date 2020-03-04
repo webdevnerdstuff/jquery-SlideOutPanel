@@ -367,7 +367,7 @@
         else {
           $('html').removeClass('slide-out-panel-static');
 
-          if ($(`.slide-out-panel-container.${settings.slideFrom}`).hasClass('open')) {
+          if (settings.bodyPush && $(`.slide-out-panel-container.${settings.slideFrom}`).hasClass('open')) {
             $('html').css({
               width: `calc(${screenWidth}px - ${settings.width}`,
             });
