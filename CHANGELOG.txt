@@ -1,6 +1,11 @@
 jQuery SlideOutPanel
 =============================
 
+Version 1.0.18 Mar 4, 2020
+----------------------------
+[master] Fixed some issues with the responsiveness when using bodyPush (webdevnerdstuff)
+
+
 Version 1.0.0 Feb 27, 2020
 ----------------------------
 [master] initial release (webdevnerdstuff)
