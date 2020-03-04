@@ -26,7 +26,8 @@
 		rendered() {},
 	};
 
-	let globalSettings;
+  let globalSettings;
+  let pluginLoaded = false;
 
 	// ---------------------------------------------------- PLUGIN DEFINITION //
 	$.fn[pluginName] = function(options) {
@@ -393,12 +394,16 @@
 			closePanel(closeElemId, globalSettings[closeElemId]);
 		};
 
-		// Click to close //
-		$('body').off().on('click', '.close-slide-out-panel, .slide-out-panel-screen', function() {
-			const closeBtnElemId = $(this).attr('data-id');
-			closePanel(closeBtnElemId, globalSettings[closeBtnElemId], this);
-			return false;
-		});
+    // Click to close //
+    if (!pluginLoaded) {
+      $('body').on('click', '.close-slide-out-panel, .slide-out-panel-screen', function() {
+        const closeBtnElemId = $(this).attr('data-id');
+        closePanel(closeBtnElemId, globalSettings[closeBtnElemId], this);
+        return false;
+      });
+
+      pluginLoaded = true;
+    }
 
 		// -------------------------- Escape Key to Close
 		$('body').on('keyup', e => {

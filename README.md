@@ -222,7 +222,7 @@ jQuery
 
 ## Change Log
 
-[CHANGELOG](https://github.com/webdevnerdstuff/jquery-SlideOutPanel/blob/master/CHANGELOG.txt)
+[CHANGELOG](https://github.com/webdevnerdstuff/jquery-SlideOutPanel/blob/master/CHANGELOG.md)
 
 <br>
 
