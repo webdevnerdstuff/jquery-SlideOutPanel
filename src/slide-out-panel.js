@@ -1,10 +1,11 @@
-(function($) {
+(function($, window) {
 	const pluginName = 'SlideOutPanel';
 
 	// Create the defaults once //
 	const defaults = {
 		// Options //
-		bodyPush: true,
+		bodyPush: false,
+    breakpoint: '768px',
 		closeBtn: '&#10005;',
 		closeBtnSize: '',
 		enableEscapeKey: false,
@@ -32,13 +33,14 @@
 		let componentElm;
 		let headerElm;
 		let contentElm;
-		let footerElm;
+    let footerElm;
+    let screenSize;
 
 		// Check to see if element exists //
 		if (typeof $(this).attr('id') === 'undefined') {
 			console.error(`${pluginName}: Element not found. Element options:`, options);
 			return false;
-		}
+    }
 
 		// ---------------------------------------------------- SlideOutPanel constructor //
 		function SlideOutPanel(element, soOptions) {
@@ -68,7 +70,10 @@
 			// Set transitionDuration to INT //
 			let transitionDuration = globalSettings[element.id].transitionDuration;
 			transitionDuration = transitionDuration.replace('s', '');
-			globalSettings[element.id].transitionDuration = parseFloat(transitionDuration);
+      globalSettings[element.id].transitionDuration = parseFloat(transitionDuration);
+
+      // Window size //
+      orientationChange();
 
 			this._defaults = defaults;
 			this._name = pluginName;
@@ -345,7 +350,41 @@
 			}
 
 			return false;
-		};
+    };
+
+    // ---------------------------------------------------- WINDOW SIZE & ORIENTATION CHANGING //
+    const orientationChange = () => {
+      const screenWidth = $(window).width();
+
+      for (let i = 0; i < Object.values(globalSettings).length; i += 1) {
+        const settings = Object.values(globalSettings)[i];
+        const breakpoint = settings.breakpoint.match(/(\d+)/);
+
+        if (screenWidth < breakpoint[0] && settings.bodyPush) {
+          $('html').addClass('slide-out-panel-static');
+          break;
+        }
+        else {
+          $('html').removeClass('slide-out-panel-static');
+
+          if ($(`.slide-out-panel-container.${settings.slideFrom}`).hasClass('open')) {
+            $('html').css({
+              width: `calc(${screenWidth}px - ${settings.width}`,
+            });
+          }
+        }
+      }
+    };
+
+    // Resize //
+    let resizeTimer;
+
+    $(window).on('resize', e => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        orientationChange();
+      }, 250);
+    });
 
 		// ---------------------------------------------------- Public Functions //
 		// -------------------------- Close Panel //
@@ -393,4 +432,4 @@
 			$.data(this, `plugin-${pluginName}-${$(this).attr('id')}`, new SlideOutPanel(this, options));
 		});
 	};
-}(jQuery));
+}(jQuery, window));

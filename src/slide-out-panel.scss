@@ -22,6 +22,10 @@ $so-footer-background-color: #fff !default;
 html {
 	width: 100%;
 
+	@media all and (max-width: $so-screen-sm) {
+		width: 100% !important;
+	}
+
 	&.slide-out-top {
 		bottom: initial !important;
 		top: 0;
@@ -40,6 +44,12 @@ html {
 	&.slide-out-left {
 		left: initial !important;
 		right: 0;
+	}
+
+	&.slide-out-panel-static {
+		position: static !important;
+		transition: none !important;
+		width: 100% !important;
 	}
 }
 
