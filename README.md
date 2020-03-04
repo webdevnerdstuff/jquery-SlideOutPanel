@@ -219,6 +219,12 @@ jQuery
 
 <br>
 
+## Change Log
+
+[CHANGELOG](https://github.com/webdevnerdstuff/jquery-SlideOutPanel/blob/master/CHANGELOG.txt)
+
+<br>
+
 ## License
 
 Copyright (c) 2020 WebDevNerdStuff
