@@ -61,6 +61,10 @@ html.slide-out-panel-static {
   }
 }
 
+.slide-out-panel-container * {
+  box-sizing: border-box;
+}
+
 .slide-out-panel-container .close-slide-out-panel {
   color: #000;
   cursor: pointer;

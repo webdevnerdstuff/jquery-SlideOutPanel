@@ -78,6 +78,10 @@ html {
 		}
 	}
 
+	* {
+		box-sizing: border-box;
+	}
+
 	// -------------------------- Close button //
 	.close-slide-out-panel {
 		color: $so-close-btn-color;
