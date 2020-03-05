@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to the "jquery-SlideOutPanel" plugin will be documented in this file.
 
+## v1.0.26
+Mar 5, 2020
+<br>
+[master] Fixed esc key closing always being on. (webdevnerdstuff)
+
 ## v1.0.25
 Mar 5, 2020
 <br>
