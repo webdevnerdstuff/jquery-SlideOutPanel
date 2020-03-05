@@ -8,10 +8,11 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-(function ($) {
+(function ($, window) {
   var pluginName = 'SlideOutPanel';
   var defaults = {
-    bodyPush: true,
+    bodyPush: false,
+    breakpoint: '768px',
     closeBtn: '&#10005;',
     closeBtnSize: '',
     enableEscapeKey: false,
@@ -31,6 +32,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     rendered: function rendered() {}
   };
   var globalSettings;
+  var pluginLoaded = false;
 
   $.fn[pluginName] = function (options) {
     var _this = this;
@@ -39,6 +41,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     var headerElm;
     var contentElm;
     var footerElm;
+    var screenSize;
 
     if (typeof $(this).attr('id') === 'undefined') {
       console.error("".concat(pluginName, ": Element not found. Element options:"), options);
@@ -66,6 +69,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       var transitionDuration = globalSettings[element.id].transitionDuration;
       transitionDuration = transitionDuration.replace('s', '');
       globalSettings[element.id].transitionDuration = parseFloat(transitionDuration);
+      orientationChange();
       this._defaults = defaults;
       this._name = pluginName;
       init(element.id, globalSettings[element.id]);
@@ -297,16 +301,50 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       return false;
     };
 
+    var orientationChange = function orientationChange() {
+      var screenWidth = $(window).width();
+
+      for (var i = 0; i < Object.values(globalSettings).length; i += 1) {
+        var settings = Object.values(globalSettings)[i];
+        var breakpoint = settings.breakpoint.match(/(\d+)/);
+
+        if (screenWidth < breakpoint[0] && settings.bodyPush) {
+          $('html').addClass('slide-out-panel-static');
+          break;
+        } else {
+          $('html').removeClass('slide-out-panel-static');
+
+          if (settings.bodyPush && $(".slide-out-panel-container.".concat(settings.slideFrom)).hasClass('open')) {
+            $('html').css({
+              width: "calc(".concat(screenWidth, "px - ").concat(settings.width)
+            });
+          }
+        }
+      }
+    };
+
+    var resizeTimer;
+    $(window).on('resize', function (e) {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function () {
+        orientationChange();
+      }, 250);
+    });
+
     this.close = function () {
       var closeElemId = $(this).attr('id');
       closePanel(closeElemId, globalSettings[closeElemId]);
     };
 
-    $('body').off().on('click', '.close-slide-out-panel, .slide-out-panel-screen', function () {
-      var closeBtnElemId = $(this).attr('data-id');
-      closePanel(closeBtnElemId, globalSettings[closeBtnElemId], this);
-      return false;
-    });
+    if (!pluginLoaded) {
+      $('body').on('click', '.close-slide-out-panel, .slide-out-panel-screen', function () {
+        var closeBtnElemId = $(this).attr('data-id');
+        closePanel(closeBtnElemId, globalSettings[closeBtnElemId], this);
+        return false;
+      });
+      pluginLoaded = true;
+    }
+
     $('body').on('keyup', function (e) {
       if (e.keyCode === 27) {
         closePanel();
@@ -335,4 +373,4 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       $.data(this, "plugin-".concat(pluginName, "-").concat($(this).attr('id')), new SlideOutPanel(this, options));
     });
   };
-})(jQuery);
+})(jQuery, window);
