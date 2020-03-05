@@ -256,7 +256,9 @@
 			if (!elmId && !settings && !elm) {
 				// Close all panels //
 				Object.entries(globalSettings).forEach(([key, val]) => {
-					closePanel(key, globalSettings[key]);
+          if (globalSettings[key].enableEscapeKey) {
+            closePanel(key, globalSettings[key]);
+          }
 				});
 
 				return false;

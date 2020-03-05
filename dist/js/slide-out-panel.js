@@ -221,7 +221,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
               key = _ref2[0],
               val = _ref2[1];
 
-          closePanel(key, globalSettings[key]);
+          if (globalSettings[key].enableEscapeKey) {
+            closePanel(key, globalSettings[key]);
+          }
         });
         return false;
       }
