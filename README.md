@@ -125,7 +125,7 @@ $('#slide-out-panel').SlideOutPanel({
 
 Name    | Description
 :-----  | :-----
-open    | Open's the panel
+open    | Opens the panel
 close   | Closes the panel
 toggle  | Toggles the panel open/close
 destroy | Removes the panel from the DOM
