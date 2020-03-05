@@ -51,5 +51,8 @@
     "gruntify-eslint": "^5.0.0",
     "load-grunt-tasks": "^5.1.0",
     "node-sass": "^4.13.1"
+  },
+  "dependencies": {
+    "jquery": "^3.4.1"
   }
 }
