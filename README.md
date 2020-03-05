@@ -149,22 +149,22 @@ slideOutPanel.destroy();
 
 <br>
 
-Variable                      | Type    | Default   | Description
-:-----                        | :-----  | :-----    | :-----
-$pieces-padding               | string  | 15px      | Padding for the panel pieces (header, section, footer)
-$so-screen-sm                 |         | 768px     | Responsive breakpoint
-$so-close-btn-color           |         | #000      | Color of the close button
-$so-close-font-size           |         | 12px      | Font size of the close button
-$so-container-background      |         | #fff      | The panel background color
-$so-container-box-shadow      |         | -3px 3px 9px rgba(0, 0, 0, .3) | The panel box shadow
-$so-container-transition      |         | top ease, right ease, bottom ease, left ease |
-$so-container-z-index         |         | 9999      | The panel z-index
-$so-content-no-header-padding-top |     | $pieces-padding  * 2 | The top padding of the `<section>` when there is no header
-$so-header-background-color   |          | #fff     | The header background color
-$so-header-border-color       |          | #e5e5e5  | The header bottom border color
-$so-header-border-width       |          | 1px      | The header border width
-$so-content-background-color  |          | #fff     | The `<section>` background color
-$so-footer-background-color   |          | #fff     | The `<footer>` background color
+Variable                      | Default   | Description
+:-----                        | :-----    | :-----
+$pieces-padding               | 15px      | Padding for the panel pieces (header, section, footer)
+$so-screen-sm                 | 768px     | Responsive breakpoint
+$so-close-btn-color           | #000      | Color of the close button
+$so-close-font-size           | 12px      | Font size of the close button
+$so-container-background      | #fff      | The panel background color
+$so-container-box-shadow      | -3px 3px 9px rgba(0, 0, 0, .3) | The panel box shadow
+$so-container-transition      | top ease, right ease, bottom ease, left ease | Transition effect
+$so-container-z-index         | 9999      | The panel z-index
+$so-content-no-header-padding-top | $pieces-padding  * 2 | The top padding of the `<section>` when there is no header
+$so-header-background-color   | #fff     | The header background color
+$so-header-border-color       | #e5e5e5  | The header bottom border color
+$so-header-border-width       | 1px      | The header border width
+$so-content-background-color  | #fff     | The `<section>` background color
+$so-footer-background-color   | #fff     | The `<footer>` background color
 
 <br>
 
