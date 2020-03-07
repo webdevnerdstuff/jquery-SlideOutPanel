@@ -5,7 +5,7 @@
 	const defaults = {
 		// Options //
 		bodyPush: false,
-    breakpoint: '768px',
+		breakpoint: '768px',
 		closeBtn: '&#10005;',
 		closeBtnSize: '',
 		enableEscapeKey: false,
@@ -14,34 +14,34 @@
 		screenOpacity: '0.5',
 		screenZindex: '9998',
 		showScreen: true,
-    slideFrom: 'right',
-    transition: 'ease',
+		slideFrom: 'right',
+		transition: 'ease',
 		transitionDuration: '0.35s',
 		width: '350px',
 		// Events //
-		afterClosed() {},
-		afterOpen() {},
-		beforeClosed() {},
-		beforeOpen() {},
-		rendered() {},
+		afterClosed() { },
+		afterOpen() { },
+		beforeClosed() { },
+		beforeOpen() { },
+		rendered() { },
 	};
 
-  let globalSettings;
-  let pluginLoaded = false;
+	let globalSettings;
+	let pluginLoaded = false;
 
 	// ---------------------------------------------------- PLUGIN DEFINITION //
 	$.fn[pluginName] = function(options) {
 		let componentElm;
 		let headerElm;
 		let contentElm;
-    let footerElm;
-    let screenSize;
+		let footerElm;
+		let screenSize;
 
 		// Check to see if element exists //
 		if (typeof $(this).attr('id') === 'undefined') {
 			console.error(`${pluginName}: Element not found. Element options:`, options);
 			return false;
-    }
+		}
 
 		// ---------------------------------------------------- SlideOutPanel constructor //
 		function SlideOutPanel(element, soOptions) {
@@ -71,10 +71,10 @@
 			// Set transitionDuration to INT //
 			let transitionDuration = globalSettings[element.id].transitionDuration;
 			transitionDuration = transitionDuration.replace('s', '');
-      globalSettings[element.id].transitionDuration = parseFloat(transitionDuration);
+			globalSettings[element.id].transitionDuration = parseFloat(transitionDuration);
 
-      // Window size //
-      orientationChange();
+			// Window size //
+			orientationChange();
 
 			this._defaults = defaults;
 			this._name = pluginName;
@@ -114,8 +114,8 @@
 				.css({
 					display: 'block',
 					height: settings.offsetTop === 0 ? 'initial' : `calc(100vh - ${settings.offsetTop})`,
-          top: settings.slideFrom === 'bottom' ? 'initial' : settings.offsetTop,
-          transitionTimingFunction: `${settings.transition}`,
+					top: settings.slideFrom === 'bottom' ? 'initial' : settings.offsetTop,
+					transitionTimingFunction: `${settings.transition}`,
 					transitionDuration: `${settings.transitionDuration}s`,
 					width: settings.width,
 				})
@@ -134,10 +134,6 @@
 					left: settings.slideFrom !== 'left' ? 'initial' : `-${settings.width}`,
 					right: settings.slideFrom !== 'right' ? 'initial' : `-${settings.width}`,
 				});
-
-				if (settings.bodyPush && (settings.slideFrom === 'left' || settings.slideFrom === 'right')) {
-					$('html').addClass(`slide-out-${settings.slideFrom}`);
-				}
 			}
 			else {
 				// If sliding out from top or bottom //
@@ -256,9 +252,9 @@
 			if (!elmId && !settings && !elm) {
 				// Close all panels //
 				Object.entries(globalSettings).forEach(([key, val]) => {
-          if (globalSettings[key].enableEscapeKey) {
-            closePanel(key, globalSettings[key]);
-          }
+					if (globalSettings[key].enableEscapeKey) {
+						closePanel(key, globalSettings[key]);
+					}
 				});
 
 				return false;
@@ -288,6 +284,10 @@
 					zIndex: `-${settings.screenZindex}`,
 				});
 
+				if (settings.bodyPush && (settings.slideFrom === 'left' || settings.slideFrom === 'right')) {
+					$('html').removeClass(`slide-out-${settings.slideFrom}`).css('position', 'initial');
+				}
+
 				// Call afterClosed method after panel is closed //
 				settings.afterClosed();
 			}, settings.transitionDuration * 1000);
@@ -315,6 +315,10 @@
 				return false;
 			}
 
+			if (settings.bodyPush && (settings.slideFrom === 'left' || settings.slideFrom === 'right')) {
+				$('html').addClass(`slide-out-${settings.slideFrom}`);
+			}
+
 			// Call beforeOpen method before panel is open //
 			settings.beforeOpen();
 
@@ -330,7 +334,7 @@
 
 			if (settings.bodyPush && (settings.slideFrom === 'left' || settings.slideFrom === 'right')) {
 				$('html').css({
-					position: 'fixed',
+					position: 'absolute',
 					width: `calc(${$('body').width()}px - ${settings.width}`,
 				});
 			}
@@ -353,41 +357,41 @@
 			}
 
 			return false;
-    };
+		};
 
-    // ---------------------------------------------------- WINDOW SIZE & ORIENTATION CHANGING //
-    const orientationChange = () => {
-      const screenWidth = $(window).width();
+		// ---------------------------------------------------- WINDOW SIZE & ORIENTATION CHANGING //
+		const orientationChange = () => {
+			const screenWidth = $(window).width();
 
-      for (let i = 0; i < Object.values(globalSettings).length; i += 1) {
-        const settings = Object.values(globalSettings)[i];
-        const breakpoint = settings.breakpoint.match(/(\d+)/);
+			for (let i = 0; i < Object.values(globalSettings).length; i += 1) {
+				const settings = Object.values(globalSettings)[i];
+				const breakpoint = settings.breakpoint.match(/(\d+)/);
 
-        if (screenWidth < breakpoint[0] && settings.bodyPush) {
-          $('html').addClass('slide-out-panel-static');
-          break;
-        }
-        else {
-          $('html').removeClass('slide-out-panel-static');
+				if (screenWidth < breakpoint[0] && settings.bodyPush) {
+					$('html').addClass('slide-out-panel-static');
+					break;
+				}
+				else {
+					$('html').removeClass('slide-out-panel-static');
 
-          if (settings.bodyPush && $(`.slide-out-panel-container.${settings.slideFrom}`).hasClass('open')) {
-            $('html').css({
-              width: `calc(${screenWidth}px - ${settings.width}`,
-            });
-          }
-        }
-      }
-    };
+					if (settings.bodyPush && $(`.slide-out-panel-container.${settings.slideFrom}`).hasClass('open')) {
+						$('html').css({
+							width: `calc(${screenWidth}px - ${settings.width}`,
+						});
+					}
+				}
+			}
+		};
 
-    // Resize //
-    let resizeTimer;
+		// Resize //
+		let resizeTimer;
 
-    $(window).on('resize', e => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        orientationChange();
-      }, 250);
-    });
+		$(window).on('resize', e => {
+			clearTimeout(resizeTimer);
+			resizeTimer = setTimeout(() => {
+				orientationChange();
+			}, 250);
+		});
 
 		// ---------------------------------------------------- Public Functions //
 		// -------------------------- Close Panel //
@@ -396,16 +400,16 @@
 			closePanel(closeElemId, globalSettings[closeElemId]);
 		};
 
-    // Click to close //
-    if (!pluginLoaded) {
-      $('body').on('click', '.close-slide-out-panel, .slide-out-panel-screen', function() {
-        const closeBtnElemId = $(this).attr('data-id');
-        closePanel(closeBtnElemId, globalSettings[closeBtnElemId], this);
-        return false;
-      });
+		// Click to close //
+		if (!pluginLoaded) {
+			$('body').on('click', '.close-slide-out-panel, .slide-out-panel-screen', function() {
+				const closeBtnElemId = $(this).attr('data-id');
+				closePanel(closeBtnElemId, globalSettings[closeBtnElemId], this);
+				return false;
+			});
 
-      pluginLoaded = true;
-    }
+			pluginLoaded = true;
+		}
 
 		// -------------------------- Escape Key to Close
 		$('body').on('keyup', e => {
@@ -422,10 +426,10 @@
 
 		// -------------------------- Open Panel //
 		this.open = function() {
-      const openElemId = $(this).attr('id');
-      if (!$(`#${openElemId}`).hasClass('open')) {
-        openPanel(openElemId, globalSettings[openElemId]);
-      }
+			const openElemId = $(this).attr('id');
+			if (!$(`#${openElemId}`).hasClass('open')) {
+				openPanel(openElemId, globalSettings[openElemId]);
+			}
 		};
 
 		// -------------------------- Toggle Panel //

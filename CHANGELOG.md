@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to the "jquery-SlideOutPanel" plugin will be documented in this file.
 
+## v1.0.27
+Mar 7, 2020
+<br>
+[master] Fixed issue where multiple elements using bodyPush conflicting with each other. (webdevnerdstuff)
+
 ## v1.0.26
 Mar 5, 2020
 <br>
