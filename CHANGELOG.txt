@@ -1,6 +1,0 @@
-jQuery SlideOutPanel
-=============================
-
-Version 1.0.0 Feb 27, 2020
-----------------------------
-[master] initial release (webdevnerdstuff)

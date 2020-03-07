@@ -2,6 +2,12 @@ html {
   width: 100%;
 }
 
+@media all and (max-width: 768px) {
+  html {
+    width: 100% !important;
+  }
+}
+
 html.slide-out-top {
   bottom: initial !important;
   top: 0;
@@ -20,6 +26,12 @@ html.slide-out-bottom {
 html.slide-out-left {
   left: initial !important;
   right: 0;
+}
+
+html.slide-out-panel-static {
+  position: static !important;
+  transition: none !important;
+  width: 100% !important;
 }
 
 .slide-out-panel-container {
@@ -47,6 +59,10 @@ html.slide-out-left {
   .slide-out-panel-container.open {
     width: 100% !important;
   }
+}
+
+.slide-out-panel-container * {
+  box-sizing: border-box;
 }
 
 .slide-out-panel-container .close-slide-out-panel {

@@ -2,6 +2,7 @@
 jQuery SlideOutPanel
 -------
 
+[![NPM_PACKAGE](https://img.shields.io/badge/NPM%20-Package-%23cb3837)](https://www.npmjs.com/package/jquery-slideoutpanel)
 
 Simple jQuery Plugin to add a sliding out panel.
 
@@ -48,6 +49,7 @@ Required tag: `<section>`
 Name                | Type    | Default | Options | Description
 :-----              | :------ | :-----  | :-----  | :-----
 bodyPush            | boolean | false   | true <br> false| Enables pushing the body when the tab opens (works with slideFrom right and left
+breakpoint          | String  | 768px   | | Sets the breakpoint (matches the breakpoint in SCSS/CSS). This is used when bodyPush is true
 closeBtn            | html    |  `&#10005;` <br> &#10005;  | |  Add a custom close button instead of the default
 closeBtnSize        | String  | 12px    | |  Adjust the close button size
 enableEscapeKey     | Boolean | false   | true <br> false |  Enables the esc key to close all panels
@@ -123,7 +125,7 @@ $('#slide-out-panel').SlideOutPanel({
 
 Name    | Description
 :-----  | :-----
-open    | Open's the panel
+open    | Opens the panel
 close   | Closes the panel
 toggle  | Toggles the panel open/close
 destroy | Removes the panel from the DOM
@@ -147,22 +149,22 @@ slideOutPanel.destroy();
 
 <br>
 
-Variable                      | Type    | Default   | Description
-:-----                        | :-----  | :-----    | :-----
-$pieces-padding               | string  | 15px      | Padding for the panel pieces (header, section, footer)
-$so-screen-sm                 |         | 768px     | Responsive breakpoint
-$so-close-btn-color           |         | #000      | Color of the close button
-$so-close-font-size           |         | 12px      | Font size of the close button
-$so-container-background      |         | #fff      | The panel background color
-$so-container-box-shadow      |         | -3px 3px 9px rgba(0, 0, 0, .3) | The panel box shadow
-$so-container-transition      |         | top ease, right ease, bottom ease, left ease |
-$so-container-z-index         |         | 9999      | The panel z-index
-$so-content-no-header-padding-top |     | $pieces-padding  * 2 | The top padding of the `<section>` when there is no header
-$so-header-background-color   |          | #fff     | The header background color
-$so-header-border-color       |          | #e5e5e5  | The header bottom border color
-$so-header-border-width       |          | 1px      | The header border width
-$so-content-background-color  |          | #fff     | The `<section>` background color
-$so-footer-background-color   |          | #fff     | The `<footer>` background color
+Variable                      | Default   | Description
+:-----                        | :-----    | :-----
+$pieces-padding               | 15px      | Padding for the panel pieces (header, section, footer)
+$so-screen-sm                 | 768px     | Responsive breakpoint
+$so-close-btn-color           | #000      | Color of the close button
+$so-close-font-size           | 12px      | Font size of the close button
+$so-container-background      | #fff      | The panel background color
+$so-container-box-shadow      | -3px 3px 9px rgba(0, 0, 0, .3) | The panel box shadow
+$so-container-transition      | top ease, right ease, bottom ease, left ease | Transition effect
+$so-container-z-index         | 9999      | The panel z-index
+$so-content-no-header-padding-top | $pieces-padding  * 2 | The top padding of the `<section>` when there is no header
+$so-header-background-color   | #fff     | The header background color
+$so-header-border-color       | #e5e5e5  | The header bottom border color
+$so-header-border-width       | 1px      | The header border width
+$so-content-background-color  | #fff     | The `<section>` background color
+$so-footer-background-color   | #fff     | The `<footer>` background color
 
 <br>
 
@@ -218,9 +220,15 @@ jQuery
 
 <br>
 
+## Change Log
+
+[CHANGELOG](https://github.com/webdevnerdstuff/jquery-SlideOutPanel/blob/master/CHANGELOG.md)
+
+<br>
+
 ## License
 
-Copyright (c) 2020 WebDevNerdStuff  
+Copyright (c) 2020 WebDevNerdStuff
 Licensed under the MIT license.
 
 [![@WebDevNerdStuff](https://img.shields.io/badge/github-webdevnerdstuff-brightgreen.svg)](https://github.com/webdevnerdstuff)
