@@ -187,6 +187,7 @@
 		const screen = (elmId, settings) => {
 			let screenHtml = '';
 			screenHtml += '<div ';
+			screenHtml += `id="slide-out-panel-screen-${elmId}"`;
 			screenHtml += 'class="slide-out-panel-screen" ';
 			screenHtml += `data-id="${elmId}" `;
 			screenHtml += 'style="';
@@ -198,6 +199,14 @@
 			screenHtml += '</div>';
 
 			$('body').append(screenHtml);
+
+			const touchScreen = document.getElementById(`slide-out-panel-screen-${elmId}`);
+
+			touchScreen.addEventListener('touchend', e => {
+				const closeBtnElemId = $(this).attr('data-id');
+				closePanel(closeBtnElemId, globalSettings[closeBtnElemId], this);
+				return false;
+			}, false);
 		};
 
 		// ---------------------------------------------------- PANEL POSITIONS //

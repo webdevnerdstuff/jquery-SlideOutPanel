@@ -51,13 +51,14 @@ html.slide-out-panel-static {
 @media all and (max-width: 768px) {
   .slide-out-panel-container {
     bottom: initial;
-    position: absolute !important;
+    position: fixed !important;
   }
 }
 
 @media all and (max-width: 768px) {
   .slide-out-panel-container.open {
     width: 100% !important;
+    position: absolute !important;
   }
 }
 
@@ -145,6 +146,12 @@ html.slide-out-panel-static {
   top: 0;
   transition: opacity ease;
   width: 100vw;
+}
+
+@media all and (max-width: 768px) {
+  .slide-out-panel-screen {
+    height: 100%;
+  }
 }
 
 /*# sourceMappingURL=slide-out-panel.css.map */

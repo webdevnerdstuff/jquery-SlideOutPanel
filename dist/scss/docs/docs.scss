@@ -53,6 +53,10 @@ table {
 		font-size: 12px;
 		position: absolute;
 		text-align: center;
+
+		@media all and (max-width: 768px) {
+			position: relative;
+		}
 	}
 }
 
