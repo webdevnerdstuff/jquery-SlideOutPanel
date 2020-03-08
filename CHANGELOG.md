@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to the "jquery-SlideOutPanel" plugin will be documented in this file.
 
+## v1.0.30
+Mar 7, 2020
+<br>
+[master] Adding touch event for mobile devices to close panel. (webdevnerdstuff)
+
 ## v1.0.28
 Mar 7, 2020
 <br>

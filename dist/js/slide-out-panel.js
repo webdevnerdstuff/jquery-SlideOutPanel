@@ -157,6 +157,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     var screen = function screen(elmId, settings) {
       var screenHtml = '';
       screenHtml += '<div ';
+      screenHtml += "id=\"slide-out-panel-screen-".concat(elmId, "\"");
       screenHtml += 'class="slide-out-panel-screen" ';
       screenHtml += "data-id=\"".concat(elmId, "\" ");
       screenHtml += 'style="';
@@ -167,6 +168,12 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       screenHtml += '">';
       screenHtml += '</div>';
       $('body').append(screenHtml);
+      var touchScreen = document.getElementById("slide-out-panel-screen-".concat(elmId));
+      touchScreen.addEventListener('touchend', function (e) {
+        var closeBtnElemId = $(_this).attr('data-id');
+        closePanel(closeBtnElemId, globalSettings[closeBtnElemId], _this);
+        return false;
+      }, false);
     };
 
     var panelPositions = function panelPositions(elmId, settings, action) {
