@@ -203,6 +203,7 @@
 			const touchScreen = document.getElementById(`slide-out-panel-screen-${elmId}`);
 
 			touchScreen.addEventListener('touchend', e => {
+				e.preventDefault();
 				const closeBtnElemId = $(this).attr('data-id');
 				closePanel(closeBtnElemId, globalSettings[closeBtnElemId], this);
 				return false;
