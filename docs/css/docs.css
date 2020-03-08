@@ -52,6 +52,12 @@ table {
   text-align: center;
 }
 
+@media all and (max-width: 768px) {
+  #panel-menu footer {
+    position: relative;
+  }
+}
+
 #main-container > section {
   padding: 35px;
 }
