@@ -97,14 +97,20 @@ module.exports = grunt => {
 					outputStyle: 'expanded',
 					sourceMap: true,
 				},
-				files: { 'dist/css/<%= name %>.css': 'src/<%= name %>.scss' },
+				files: {
+          'dist/css/<%= name %>.css': 'src/<%= name %>.scss',
+          'demo/css/<%= name %>.css': 'src/demo/demo.scss',
+         },
 			},
 			dist: {
 				options: {
 					outputStyle: 'compressed',
 					sourceMap: false,
 				},
-				files: { 'dist/css/<%= name %>.min.css': 'src/<%= name %>.scss' },
+				files: {
+          'dist/css/<%= name %>.min.css': 'src/<%= name %>.scss',
+          'demo/css/<%= name %>.css': 'src/demo/demo.scss',
+         },
 			},
 		},
 		// ---------------------------------------------------- SASS-LINT //
