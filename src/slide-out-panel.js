@@ -283,7 +283,7 @@
 			panelPositions(elmId, settings, 'close');
 
 			// Hide Screen //
-			$(`.slide-out-panel-screen[data-id="${elmId}"`).removeClass('open').css({
+			$(`#slide-out-panel-screen-${elmId}`).removeClass('open').css({
 				opacity: 0,
 				transitionDuration: `${settings.transitionDuration}s`,
 			});
@@ -296,8 +296,8 @@
 
 			setTimeout(() => {
 				// Move screen z-index back //
-				$(`.slide-out-panel-screen[data-id="${elmId}"`).css({
-					zIndex: `-${settings.screenZindex}`,
+				$(`#slide-out-panel-screen-${elmId}`).css({
+					zIndex: '-9999',
 				});
 
 				if (settings.bodyPush && (settings.slideFrom === 'left' || settings.slideFrom === 'right')) {
@@ -342,7 +342,7 @@
 			panelPositions(elmId, settings, 'open');
 
 			// Show Screen //
-			$(`.slide-out-panel-screen[data-id="${elmId}"]`).addClass('open').css({
+			$(`#slide-out-panel-screen-${elmId}`).addClass('open').css({
 				opacity: 1,
 				transitionDuration: `${settings.transitionDuration}s`,
 				zIndex: `${settings.screenZindex}`,

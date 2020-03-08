@@ -239,7 +239,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
       settings.beforeClosed();
       panelPositions(elmId, settings, 'close');
-      $(".slide-out-panel-screen[data-id=\"".concat(elmId, "\"")).removeClass('open').css({
+      $("#slide-out-panel-screen-".concat(elmId)).removeClass('open').css({
         opacity: 0,
         transitionDuration: "".concat(settings.transitionDuration, "s")
       });
@@ -251,8 +251,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       }
 
       setTimeout(function () {
-        $(".slide-out-panel-screen[data-id=\"".concat(elmId, "\"")).css({
-          zIndex: "-".concat(settings.screenZindex)
+        $("#slide-out-panel-screen-".concat(elmId)).css({
+          zIndex: '-9999'
         });
 
         if (settings.bodyPush && (settings.slideFrom === 'left' || settings.slideFrom === 'right')) {
@@ -290,7 +290,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
       settings.beforeOpen();
       panelPositions(elmId, settings, 'open');
-      $(".slide-out-panel-screen[data-id=\"".concat(elmId, "\"]")).addClass('open').css({
+      $("#slide-out-panel-screen-".concat(elmId)).addClass('open').css({
         opacity: 1,
         transitionDuration: "".concat(settings.transitionDuration, "s"),
         zIndex: "".concat(settings.screenZindex)
