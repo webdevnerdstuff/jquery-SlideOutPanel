@@ -4,14 +4,14 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>jQuery SlideOutPanel - Basic</title>
+  <title>jQuery SlideOutPanel - Demo</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="../dist/css/slide-out-panel.min.css">
 </head>
 
-<body id="examples-page">
+<body id="demo-page">
   <header>
     <div class="open-nav">
       <span></span>
@@ -20,21 +20,20 @@
     </div>
 
     <div id="panel-menu" class="slide-out-panel">
-      <header>Examples</header>
+      <header>Menu</header>
       <section>
         <div class="row">
           <div class="col-12">
             <ul>
               <li><a href="index.html">Home</a></li>
-              <li><a href="basic.html">Basic</a></li>
+              <li><a href="demo.html">Demo</a></li>
             </ul>
           </div>
         </div>
-
       </section>
-      <footer>Footer</footer>
     </div>
   </header>
+
 
   <main id="main-container">
     <section id="ex-basic">
@@ -165,6 +164,24 @@
         </div>
       </div>
 
+      <!-- ==================================================== width -->
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h2>Width</h2>
+            <p>
+              <button class="sop-button basic-right btn btn-sm btn-primary" data-setting="width">Width 50vw</button>
+            </p>
+
+            <pre class="prettyprint lang-js">
+              $('#slide-out-panel').SlideOutPanel({
+                &nbsp;&nbsp; width: '50vw',
+              });
+            </pre>
+          </div>
+        </div>
+      </div>
+
       <!-- ==================================================== offsetTop -->
       <div class="container">
         <div class="row">
@@ -182,6 +199,51 @@
           </div>
         </div>
       </div>
+
+      <!-- ==================================================== Events -->
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h2>Events</h2>
+            <p>
+              <button class="sop-button basic-right btn btn-sm btn-primary" data-setting="events">Events</button>
+            </p>
+
+            <pre class="prettyprint lang-js">
+              $('#slide-out-panel').SlideOutPanel({
+                &nbsp;&nbsp; beforeOpen() {
+								&nbsp;&nbsp;&nbsp;&nbsp; alert('Before Panel Opens');
+								&nbsp;&nbsp; },
+                &nbsp;&nbsp; afterOpen() {
+								&nbsp;&nbsp;&nbsp;&nbsp; alert('After Panel Opens');
+								&nbsp;&nbsp; },
+                &nbsp;&nbsp; beforeClosed() {
+								&nbsp;&nbsp;&nbsp;&nbsp; alert('Before Panel Closed');
+								&nbsp;&nbsp; },
+                &nbsp;&nbsp; afterClosed() {
+								&nbsp;&nbsp;&nbsp;&nbsp; alert('After Panel Closed');
+								&nbsp;&nbsp; },
+              });
+            	</pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================================================== Methods -->
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h2>Methods</h2>
+            <p>
+              <button class="sop-button basic-right btn btn-sm btn-primary" data-setting="methodsOpen">Open Panel</button>
+              <button class="sop-button basic-right btn btn-sm btn-primary" data-setting="methodsClose">Close Panel</button>
+              <button class="sop-button basic-right btn btn-sm btn-primary" data-setting="methodsToggle">Toggle Pannel</button>
+              <button class="sop-button basic-right btn btn-sm btn-primary" data-setting="methodsDestroy">Destroy Pannel</button>
+            </p>
+          </div>
+        </div>
+      </div>
+
 
     </section>
   </main>
@@ -252,8 +314,29 @@
     <footer>Footer</footer>
   </div>
 
+  <!-- ==================================================== width Panel -->
+  <div id="width" class="slide-out-panel">
+    <header>Title</header>
+    <section>Hello World</section>
+    <footer>Footer</footer>
+  </div>
+
   <!-- ==================================================== offsetTop Panel -->
   <div id="offsetTop" class="slide-out-panel">
+    <header>Title</header>
+    <section>Hello World</section>
+    <footer>Footer</footer>
+  </div>
+
+  <!-- ==================================================== Events Panel -->
+  <div id="events" class="slide-out-panel">
+    <header>Title</header>
+    <section>Hello World</section>
+    <footer>Footer</footer>
+  </div>
+
+  <!-- ==================================================== Methods Panel -->
+  <div id="methods" class="slide-out-panel">
     <header>Title</header>
     <section>Hello World</section>
     <footer>Footer</footer>
@@ -301,9 +384,35 @@
       transition: 'ease-in-out',
     });
 
+    // transition //
+    var width = $('#width').SlideOutPanel({
+      width: '50vw',
+    });
+
     // offsetTop //
     var offsetTop = $('#offsetTop').SlideOutPanel({
       offsetTop: '50px',
+    });
+
+    // Events //
+    var events = $('#events').SlideOutPanel({
+      beforeOpen() {
+        alert('Before Panel Opens');
+      },
+      afterOpen() {
+        alert('After Panel Opens');
+      },
+      beforeClosed() {
+        alert('Before Panel Closed');
+      },
+      afterClosed() {
+        alert('After Panel Closed');
+      },
+    });
+
+    // Methods //
+    var methods = $('#methods').SlideOutPanel({
+      showScreen: false,
     });
 
 
@@ -352,9 +461,37 @@
         transition.open();
       }
 
+      // transition //
+      else if (setting === 'width') {
+        width.open();
+      }
+
       // offsetTop //
       else if (setting === 'offsetTop') {
         offsetTop.open();
+      }
+
+      // Events //
+      else if (setting === 'events') {
+        events.open();
+      }
+
+      // Methods //
+      // open //
+      else if (setting === 'methodsOpen') {
+        methods.open();
+      }
+      // close //
+      else if (setting === 'methodsClose') {
+        methods.close();
+      }
+      // toggle //
+      else if (setting === 'methodsToggle') {
+        methods.toggle();
+      }
+      // destroy //
+      else if (setting === 'methodsDestroy') {
+        methods.destroy();
       }
     });
 
