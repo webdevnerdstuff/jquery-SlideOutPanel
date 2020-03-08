@@ -75,7 +75,6 @@ html {
 	&.open {
 		@media all and (max-width: $so-screen-sm) {
 			width: 100% !important;
-			position: absolute !important;
 		}
 	}
 
