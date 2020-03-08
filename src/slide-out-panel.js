@@ -200,14 +200,17 @@
 
 			$('body').append(screenHtml);
 
-			const touchScreen = document.getElementById(`slide-out-panel-screen-${elmId}`);
+			// Touch detection for mobile devices //
+			if (settings.screenClose) {
+				const touchScreen = document.getElementById(`slide-out-panel-screen-${elmId}`);
 
-			touchScreen.addEventListener('touchend', e => {
-				e.preventDefault();
-				const closeBtnElemId = $(this).attr('data-id');
-				closePanel(closeBtnElemId, globalSettings[closeBtnElemId], this);
-				return false;
-			}, false);
+				touchScreen.addEventListener('touchend', e => {
+					e.preventDefault();
+					const closeBtnElemId = $(this).attr('data-id');
+					closePanel(closeBtnElemId, globalSettings[closeBtnElemId], this);
+					return false;
+				}, false);
+			}
 		};
 
 		// ---------------------------------------------------- PANEL POSITIONS //

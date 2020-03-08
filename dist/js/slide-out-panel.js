@@ -168,13 +168,16 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       screenHtml += '">';
       screenHtml += '</div>';
       $('body').append(screenHtml);
-      var touchScreen = document.getElementById("slide-out-panel-screen-".concat(elmId));
-      touchScreen.addEventListener('touchend', function (e) {
-        e.preventDefault();
-        var closeBtnElemId = $(_this).attr('data-id');
-        closePanel(closeBtnElemId, globalSettings[closeBtnElemId], _this);
-        return false;
-      }, false);
+
+      if (settings.screenClose) {
+        var touchScreen = document.getElementById("slide-out-panel-screen-".concat(elmId));
+        touchScreen.addEventListener('touchend', function (e) {
+          e.preventDefault();
+          var closeBtnElemId = $(_this).attr('data-id');
+          closePanel(closeBtnElemId, globalSettings[closeBtnElemId], _this);
+          return false;
+        }, false);
+      }
     };
 
     var panelPositions = function panelPositions(elmId, settings, action) {
