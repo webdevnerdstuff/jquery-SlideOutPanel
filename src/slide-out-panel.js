@@ -130,9 +130,13 @@
 			// Start with the panel hidden //
 			// If sliding out from left or right //
 			if (openHorizontal) {
+				const measure = settings.width.match(/[a-zA-Z]+/);
+				let num = settings.width.match(/(\d+)/);
+				num = parseInt(num) + 10;
+
 				componentElm.addClass(`slide-out-panel-container ${settings.slideFrom}`).css({
-					left: settings.slideFrom !== 'left' ? 'initial' : `-${settings.width}`,
-					right: settings.slideFrom !== 'right' ? 'initial' : `-${settings.width}`,
+					left: settings.slideFrom !== 'left' ? 'initial' : `-${num}${measure}`,
+					right: settings.slideFrom !== 'right' ? 'initial' : `-${num}${measure}`,
 				});
 			}
 			else {
@@ -207,7 +211,10 @@
 				positionVal = '0';
 			}
 			else {
-				positionVal = openHorizontal ? `-${settings.width}` : '-100%';
+				const measure = settings.width.match(/[a-zA-Z]+/);
+				let num = settings.width.match(/(\d+)/);
+				num = parseInt(num) + 10;
+				positionVal = openHorizontal ? `-${num}${measure}` : '-100%';
 			}
 
 			// Slide out from left or right //
