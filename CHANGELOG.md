@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to the "jquery-SlideOutPanel" plugin will be documented in this file.
 
+## v1.0.28
+Mar 7, 2020
+<br>
+[master] Adjust starting position so box-shadow is not on screen. (webdevnerdstuff)
+
 ## v1.0.27
 Mar 7, 2020
 <br>
