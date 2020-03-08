@@ -78,9 +78,11 @@ table {
 		z-index: 0;
 	}
 
-	.container {
-		&:not(.top) {
-			margin-bottom: 10vh;
+	main {
+		.container {
+			&:not(.top) {
+				margin-bottom: 10vh;
+			}
 		}
 	}
 }

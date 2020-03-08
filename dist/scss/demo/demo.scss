@@ -1,5 +1,5 @@
 body {
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Open Sans', sans-serif;
 }
 
 h2,
@@ -40,13 +40,29 @@ table {
 	}
 }
 
+#panel-menu {
+	section {
+		li {
+			margin-bottom: 10px;
+		}
+	}
+
+	footer {
+		border-top: 1px solid #eee;
+		bottom: 0;
+		font-size: 12px;
+		position: absolute;
+		text-align: center;
+	}
+}
+
 #main-container {
 	>section {
 		padding: 35px;
 	}
 }
 
-#examples-page {
+#demo-page {
 	h2 {
 		border: 0;
 	}
@@ -59,6 +75,14 @@ table {
 	}
 
 	button {
-		z-index: 0,
+		z-index: 0;
+	}
+
+	main {
+		.container {
+			&:not(.top) {
+				margin-bottom: 10vh;
+			}
+		}
 	}
 }
