@@ -46,51 +46,50 @@
         </div>
       </div>
 
+      <!-- ==================================================== slideFrom -->
       <div class="container">
         <div class="row">
           <div class="col-12 text-center">
-            <h2 class="">Slide from directions</h2>
+            <h2>Slide From</h2>
             <p>
-              <button class="sop-button basic-right btn btn-sm btn-primary" data-setting="slideFromRight">Open Right</button>
-              <button class="sop-button basic-left btn btn-sm btn-primary" data-setting="slideFromLeft">Open Left</button>
-              <button class="sop-button basic-top btn btn-sm btn-primary" data-setting="slideFromTop">Open Top</button>
-              <button class="sop-button basic-bottom btn btn-sm btn-primary" data-setting="slideFromBottom">Open Bottom</button>
+              <button class="sop-button basic-right btn btn-sm btn-primary" data-setting="slideFromRight">Slide From Right</button>
+              <button class="sop-button basic-left btn btn-sm btn-primary" data-setting="slideFromLeft">Slide From Left</button>
+              <button class="sop-button basic-top btn btn-sm btn-primary" data-setting="slideFromTop">Slide From Top</button>
+              <button class="sop-button basic-bottom btn btn-sm btn-primary" data-setting="slideFromBottom">Slide From Bottom</button>
             </p>
 
             <pre class="prettyprint lang-js">
+							$('#slide-out-panel').SlideOutPanel();
+
+							$('#slide-out-panel').SlideOutPanel({
+								&nbsp;&nbsp; slideFrom: 'left',
+							});
+
               $('#slide-out-panel').SlideOutPanel({
                 &nbsp;&nbsp; slideFrom: 'top',
               });
 
               $('#slide-out-panel').SlideOutPanel({
-                &nbsp;&nbsp; slideFrom: 'right',
-              });
-
-              $('#slide-out-panel').SlideOutPanel({
                 &nbsp;&nbsp; slideFrom: 'bottom',
-              });
-
-              $('#slide-out-panel').SlideOutPanel({
-                &nbsp;&nbsp; slideFrom: 'left',
               });
             </pre>
           </div>
         </div>
       </div>
 
+      <!-- ==================================================== bodyPush -->
       <div class="container">
         <div class="row">
           <div class="col-12 text-center">
-            <h2 class="">Body Push</h2>
+            <h2>Body Push</h2>
             <p>
-              <button class="sop-button basic-right btn btn-sm btn-primary" data-setting="bodyPushRight">Open Right</button>
-              <button class="sop-button basic-left btn btn-sm btn-primary" data-setting="bodyPushLeft">Open Left</button>
+              <button class="sop-button basic-right btn btn-sm btn-primary" data-setting="bodyPushRight">Body Push Right</button>
+              <button class="sop-button basic-left btn btn-sm btn-primary" data-setting="bodyPushLeft">Body Push Left</button>
             </p>
 
             <pre class="prettyprint lang-js">
               $('#slide-out-panel').SlideOutPanel({
                 &nbsp;&nbsp; bodyPush: true,
-                &nbsp;&nbsp; slideFrom: 'right',
               });
 
               $('#slide-out-panel').SlideOutPanel({
@@ -102,10 +101,75 @@
         </div>
       </div>
 
+      <!-- ==================================================== screenClose -->
       <div class="container">
         <div class="row">
           <div class="col-12 text-center">
-            <h2 class="">Offset Top</h2>
+            <h2>Screen Close</h2>
+            <p>
+              <button class="sop-button basic-right btn btn-sm btn-primary" data-setting="screenClose">Screen Close Off</button>
+            </p>
+
+            <pre class="prettyprint lang-js">
+              $('#slide-out-panel').SlideOutPanel({
+                &nbsp;&nbsp; screenClose: false,
+              });
+            </pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================================================== showScreen -->
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h2>Show Screen</h2>
+            <p>
+              <button class="sop-button basic-right btn btn-sm btn-primary" data-setting="showScreen">Do Not Show Screen</button>
+            </p>
+
+            <pre class="prettyprint lang-js">
+              $('#slide-out-panel').SlideOutPanel({
+                &nbsp;&nbsp; showScreen: false,
+              });
+            </pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================================================== transitionDuration -->
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h2>Transitions</h2>
+            <p>
+              <button class="sop-button basic-right btn btn-sm btn-primary" data-setting="transitionDuration">Duration Slower</button>
+            </p>
+
+            <pre class="prettyprint lang-js">
+              $('#slide-out-panel').SlideOutPanel({
+                &nbsp;&nbsp; transitionDuration: '5s',
+              });
+						</pre>
+
+            <p>
+              <button class="sop-button basic-right btn btn-sm btn-primary" data-setting="transition">Ease In Out</button>
+            </p>
+
+            <pre class="prettyprint lang-js">
+              $('#slide-out-panel').SlideOutPanel({
+                &nbsp;&nbsp; transition: 'ease-in-out',
+              });
+            </pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================================================== offsetTop -->
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h2>Offset Top</h2>
             <p>
               <button class="sop-button basic-right btn btn-sm btn-primary" data-setting="offsetTop">Offset Top</button>
             </p>
@@ -122,6 +186,7 @@
     </section>
   </main>
 
+  <!-- ==================================================== slideFrom Panels -->
   <div id="slideFromRight" class="slide-out-panel">
     <header>Title</header>
     <section>Hello World</section>
@@ -146,6 +211,7 @@
     <footer>Footer</footer>
   </div>
 
+  <!-- ==================================================== bodyPush Panels -->
   <div id="bodyPushRight" class="slide-out-panel">
     <header>Title</header>
     <section>Hello World</section>
@@ -158,6 +224,35 @@
     <footer>Footer</footer>
   </div>
 
+  <!-- ==================================================== screenClose Panel -->
+  <div id="screenClose" class="slide-out-panel">
+    <header>Title</header>
+    <section>Hello World</section>
+    <footer>Footer</footer>
+  </div>
+
+  <!-- ==================================================== showScreen Panel -->
+  <div id="showScreen" class="slide-out-panel">
+    <header>Title</header>
+    <section>Hello World</section>
+    <footer>Footer</footer>
+  </div>
+
+  <!-- ==================================================== transitionDuration Panel -->
+  <div id="transitionDuration" class="slide-out-panel">
+    <header>Title</header>
+    <section>Hello World</section>
+    <footer>Footer</footer>
+  </div>
+
+  <!-- ==================================================== transition Panel -->
+  <div id="transition" class="slide-out-panel">
+    <header>Title</header>
+    <section>Hello World</section>
+    <footer>Footer</footer>
+  </div>
+
+  <!-- ==================================================== offsetTop Panel -->
   <div id="offsetTop" class="slide-out-panel">
     <header>Title</header>
     <section>Hello World</section>
@@ -170,71 +265,109 @@
   <script src="../dist/js/slide-out-panel.min.js"></script>
 
   <script>
-    $(function() {
+    // slideFrom //
+    var slideFromRight = $('#slideFromRight').SlideOutPanel();
+    var slideFromLeft = $('#slideFromLeft').SlideOutPanel({ slideFrom: 'left' });
+    var slideFromTop = $('#slideFromTop').SlideOutPanel({ slideFrom: 'top' });
+    var slideFromBottom = $('#slideFromBottom').SlideOutPanel({ slideFrom: 'bottom' });
+
+    // bodyPush //
+    var bodyPushRight = $('#bodyPushRight').SlideOutPanel({
+      bodyPush: true,
+    });
+
+    var bodyPushLeft = $('#bodyPushLeft').SlideOutPanel({
+      bodyPush: true,
+      slideFrom: 'left',
+    });
+
+    // screenClose //
+    var screenClose = $('#screenClose').SlideOutPanel({
+      screenClose: false,
+    });
+
+    // showScreen //
+    var showScreen = $('#showScreen').SlideOutPanel({
+      showScreen: false,
+    });
+
+    // transitionDuration //
+    var transitionDuration = $('#transitionDuration').SlideOutPanel({
+      transitionDuration: '5s',
+    });
+
+    // transition //
+    var transition = $('#transition').SlideOutPanel({
+      transition: 'ease-in-out',
+    });
+
+    // offsetTop //
+    var offsetTop = $('#offsetTop').SlideOutPanel({
+      offsetTop: '50px',
+    });
+
+
+    $('body').on('click', '.sop-button', function() {
+      var setting = $(this).attr('data-setting');
+
       // slideFrom //
-      var slideFromRight = $('#slideFromRight').SlideOutPanel();
-      var slideFromLeft = $('#slideFromLeft').SlideOutPanel({ slideFrom: 'left' });
-      var slideFromTop = $('#slideFromTop').SlideOutPanel({ slideFrom: 'top' });
-      var slideFromBottom = $('#slideFromBottom').SlideOutPanel({ slideFrom: 'bottom' });
+      if (setting === 'slideFromRight') {
+        slideFromRight.open();
+      }
+      else if (setting === 'slideFromLeft') {
+        slideFromLeft.open();
+      }
+      else if (setting === 'slideFromTop') {
+        slideFromTop.open();
+      }
+      else if (setting === 'slideFromBottom') {
+        slideFromBottom.open();
+      }
 
       // bodyPush //
-      var bodyPushRight = $('#bodyPushRight').SlideOutPanel({
-        bodyPush: true,
-      });
+      else if (setting === 'bodyPushRight') {
+        bodyPushRight.open();
+      }
+      else if (setting === 'bodyPushLeft') {
+        bodyPushLeft.open();
+      }
 
-      var bodyPushLeft = $('#bodyPushLeft').SlideOutPanel({
-        bodyPush: true,
-        slideFrom: 'left',
-      });
+      // screenClose //
+      else if (setting === 'screenClose') {
+        screenClose.open();
+      }
+
+      // showScreen //
+      else if (setting === 'showScreen') {
+        showScreen.open();
+      }
+
+      // transitionDuration //
+      else if (setting === 'transitionDuration') {
+        transitionDuration.open();
+      }
+
+      // transition //
+      else if (setting === 'transition') {
+        transition.open();
+      }
 
       // offsetTop //
-      var offsetTop = $('#offsetTop').SlideOutPanel({
-        offsetTop: '50px',
-      });
+      else if (setting === 'offsetTop') {
+        offsetTop.open();
+      }
+    });
 
+    // Menu //
+    var panelMenu = $('#panel-menu').SlideOutPanel({
+      afterClosed() {
+        $('.open-nav').fadeIn('fast');
+      },
+    });
 
-      $('body').on('click', '.sop-button', function() {
-        var setting = $(this).attr('data-setting');
-
-        // slideFrom //
-        if (setting === 'slideFromRight') {
-          slideFromRight.open();
-        }
-        else if (setting === 'slideFromLeft') {
-          slideFromLeft.open();
-        }
-        else if (setting === 'slideFromTop') {
-          slideFromTop.open();
-        }
-        else if (setting === 'slideFromBottom') {
-          slideFromBottom.open();
-        }
-
-        // bodyPush //
-        else if (setting === 'bodyPushRight') {
-          bodyPushRight.open();
-        }
-        else if (setting === 'bodyPushLeft') {
-          bodyPushLeft.open();
-        }
-
-        //  offsetTop //
-        else if (setting === 'offsetTop') {
-          offsetTop.open();
-        }
-      });
-
-      // Menu //
-      var panelMenu = $('#panel-menu').SlideOutPanel({
-        afterClosed() {
-          $('.open-nav').fadeIn('fast');
-        },
-      });
-
-      $('body').on('click', '.open-nav', function() {
-        panelMenu.open();
-        $('.open-nav').fadeOut('fast');
-      });
+    $('body').on('click', '.open-nav', function() {
+      panelMenu.open();
+      $('.open-nav').fadeOut('fast');
     });
   </script>
 

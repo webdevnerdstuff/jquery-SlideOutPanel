@@ -47,9 +47,18 @@ table {
 }
 
 #examples-page {
+	h2 {
+		border: 0;
+	}
+
 	pre {
 		margin: 20px auto;
 		text-align: left;
 		width: fit-content;
+		z-index: 0;
+	}
+
+	button {
+		z-index: 0,
 	}
 }
