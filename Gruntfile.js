@@ -99,7 +99,7 @@ module.exports = grunt => {
 				},
 				files: {
           'dist/css/<%= name %>.css': 'src/<%= name %>.scss',
-          'demo/css/<%= name %>.css': 'src/demo/demo.scss',
+          'docs/css/<%= name %>.css': 'src/docs/docs.scss',
          },
 			},
 			dist: {
@@ -109,7 +109,7 @@ module.exports = grunt => {
 				},
 				files: {
           'dist/css/<%= name %>.min.css': 'src/<%= name %>.scss',
-          'demo/css/<%= name %>.css': 'src/demo/demo.scss',
+          'docs/css/<%= name %>.css': 'src/docs/docs.scss',
          },
 			},
 		},
