@@ -112,9 +112,12 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       }
 
       if (openHorizontal) {
+        var measure = settings.width.match(/[a-zA-Z]+/);
+        var num = settings.width.match(/(\d+)/);
+        num = parseInt(num) + 10;
         componentElm.addClass("slide-out-panel-container ".concat(settings.slideFrom)).css({
-          left: settings.slideFrom !== 'left' ? 'initial' : "-".concat(settings.width),
-          right: settings.slideFrom !== 'right' ? 'initial' : "-".concat(settings.width)
+          left: settings.slideFrom !== 'left' ? 'initial' : "-".concat(num).concat(measure),
+          right: settings.slideFrom !== 'right' ? 'initial' : "-".concat(num).concat(measure)
         });
       } else {
         componentElm.addClass("slide-out-panel-container ".concat(settings.slideFrom)).css({
@@ -174,7 +177,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       if (action === 'open') {
         positionVal = '0';
       } else {
-        positionVal = openHorizontal ? "-".concat(settings.width) : '-100%';
+        var measure = settings.width.match(/[a-zA-Z]+/);
+        var num = settings.width.match(/(\d+)/);
+        num = parseInt(num) + 10;
+        positionVal = openHorizontal ? "-".concat(num).concat(measure) : '-100%';
       }
 
       if (openHorizontal) {
