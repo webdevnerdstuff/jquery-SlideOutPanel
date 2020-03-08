@@ -170,6 +170,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       $('body').append(screenHtml);
       var touchScreen = document.getElementById("slide-out-panel-screen-".concat(elmId));
       touchScreen.addEventListener('touchend', function (e) {
+        e.preventDefault();
         var closeBtnElemId = $(_this).attr('data-id');
         closePanel(closeBtnElemId, globalSettings[closeBtnElemId], _this);
         return false;
