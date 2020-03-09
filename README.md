@@ -17,7 +17,7 @@ npm install --save-dev jquery-slideoutpanel
 
 ### Demo
 
-[https://webdevnerdstuff.github.io/jquery-SlideOutPanel/](https://webdevnerdstuff.github.io/jquery-SlideOutPanel/)
+[https://webdevnerdstuff.github.io/jquery-SlideOutPanel/demo.html](https://webdevnerdstuff.github.io/jquery-SlideOutPanel/demo.html)
 
 <br>
 
