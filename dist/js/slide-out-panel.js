@@ -112,14 +112,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       }
 
       if (openHorizontal) {
+        var measure = settings.width.match(/[a-zA-Z]+/);
+        var num = settings.width.match(/(\d+)/);
+        num = parseInt(num) + 10;
         componentElm.addClass("slide-out-panel-container ".concat(settings.slideFrom)).css({
-          left: settings.slideFrom !== 'left' ? 'initial' : "-".concat(settings.width),
-          right: settings.slideFrom !== 'right' ? 'initial' : "-".concat(settings.width)
+          left: settings.slideFrom !== 'left' ? 'initial' : "-".concat(num).concat(measure),
+          right: settings.slideFrom !== 'right' ? 'initial' : "-".concat(num).concat(measure)
         });
-
-        if (settings.bodyPush && (settings.slideFrom === 'left' || settings.slideFrom === 'right')) {
-          $('html').addClass("slide-out-".concat(settings.slideFrom));
-        }
       } else {
         componentElm.addClass("slide-out-panel-container ".concat(settings.slideFrom)).css({
           bottom: settings.slideFrom !== 'bottom' ? 'initial' : '-100%',
@@ -158,6 +157,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     var screen = function screen(elmId, settings) {
       var screenHtml = '';
       screenHtml += '<div ';
+      screenHtml += "id=\"slide-out-panel-screen-".concat(elmId, "\"");
       screenHtml += 'class="slide-out-panel-screen" ';
       screenHtml += "data-id=\"".concat(elmId, "\" ");
       screenHtml += 'style="';
@@ -168,6 +168,16 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       screenHtml += '">';
       screenHtml += '</div>';
       $('body').append(screenHtml);
+
+      if (settings.screenClose) {
+        var touchScreen = document.getElementById("slide-out-panel-screen-".concat(elmId));
+        touchScreen.addEventListener('touchend', function (e) {
+          e.preventDefault();
+          var closeBtnElemId = $(_this).attr('data-id');
+          closePanel(closeBtnElemId, globalSettings[closeBtnElemId], _this);
+          return false;
+        }, false);
+      }
     };
 
     var panelPositions = function panelPositions(elmId, settings, action) {
@@ -178,7 +188,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       if (action === 'open') {
         positionVal = '0';
       } else {
-        positionVal = openHorizontal ? "-".concat(settings.width) : '-100%';
+        var measure = settings.width.match(/[a-zA-Z]+/);
+        var num = settings.width.match(/(\d+)/);
+        num = parseInt(num) + 10;
+        positionVal = openHorizontal ? "-".concat(num).concat(measure) : '-100%';
       }
 
       if (openHorizontal) {
@@ -230,7 +243,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
       settings.beforeClosed();
       panelPositions(elmId, settings, 'close');
-      $(".slide-out-panel-screen[data-id=\"".concat(elmId, "\"")).removeClass('open').css({
+      $("#slide-out-panel-screen-".concat(elmId)).removeClass('open').css({
         opacity: 0,
         transitionDuration: "".concat(settings.transitionDuration, "s")
       });
@@ -242,9 +255,14 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       }
 
       setTimeout(function () {
-        $(".slide-out-panel-screen[data-id=\"".concat(elmId, "\"")).css({
-          zIndex: "-".concat(settings.screenZindex)
+        $("#slide-out-panel-screen-".concat(elmId)).css({
+          zIndex: '-9999'
         });
+
+        if (settings.bodyPush && (settings.slideFrom === 'left' || settings.slideFrom === 'right')) {
+          $('html').removeClass("slide-out-".concat(settings.slideFrom)).css('position', 'initial');
+        }
+
         settings.afterClosed();
       }, settings.transitionDuration * 1000);
       return false;
@@ -270,9 +288,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         return false;
       }
 
+      if (settings.bodyPush && (settings.slideFrom === 'left' || settings.slideFrom === 'right')) {
+        $('html').addClass("slide-out-".concat(settings.slideFrom));
+      }
+
       settings.beforeOpen();
       panelPositions(elmId, settings, 'open');
-      $(".slide-out-panel-screen[data-id=\"".concat(elmId, "\"]")).addClass('open').css({
+      $("#slide-out-panel-screen-".concat(elmId)).addClass('open').css({
         opacity: 1,
         transitionDuration: "".concat(settings.transitionDuration, "s"),
         zIndex: "".concat(settings.screenZindex)
@@ -280,7 +302,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
       if (settings.bodyPush && (settings.slideFrom === 'left' || settings.slideFrom === 'right')) {
         $('html').css({
-          position: 'fixed',
+          position: 'absolute',
           width: "calc(".concat($('body').width(), "px - ").concat(settings.width)
         });
       }

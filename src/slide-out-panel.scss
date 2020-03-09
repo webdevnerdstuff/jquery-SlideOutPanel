@@ -69,7 +69,7 @@ html {
 
 	@media all and (max-width: $so-screen-sm) {
 		bottom: initial;
-		position: absolute !important;
+		position: fixed !important;
 	}
 
 	&.open {
@@ -169,4 +169,8 @@ html {
 	top: 0;
 	transition: opacity ease;
 	width: 100vw;
+
+	@media all and (max-width: $so-screen-sm) {
+		height: 100%;
+	}
 }
