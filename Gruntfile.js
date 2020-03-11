@@ -15,6 +15,7 @@ module.exports = grunt => {
 			temp: {
 				src: ['_temp'],
 			},
+			demo: ['docs/css', 'docs/js'],
 		},
 		// ---------------------------------------------------- COPY //
 		copy: {
@@ -82,6 +83,7 @@ module.exports = grunt => {
 			dist: {
 				files: {
 					'dist/js/<%= name %>.min.js': ['_temp/<%= name %>.js'],
+					'docs/js/<%= name %>.min.js': ['_temp/<%= name %>.js'],
 				},
 			},
 		},
@@ -98,9 +100,10 @@ module.exports = grunt => {
 					sourceMap: true,
 				},
 				files: {
-          'dist/css/<%= name %>.css': 'src/<%= name %>.scss',
-          'demo/css/<%= name %>.css': 'src/demo/demo.scss',
-         },
+					'dist/css/<%= name %>.css': 'src/<%= name %>.scss',
+					'docs/css/<%= name %>.css': 'src/<%= name %>.scss',
+					'docs/css/docs.css': 'src/docs/docs.scss',
+				},
 			},
 			dist: {
 				options: {
@@ -108,9 +111,10 @@ module.exports = grunt => {
 					sourceMap: false,
 				},
 				files: {
-          'dist/css/<%= name %>.min.css': 'src/<%= name %>.scss',
-          'demo/css/<%= name %>.css': 'src/demo/demo.scss',
-         },
+					'dist/css/<%= name %>.min.css': 'src/<%= name %>.scss',
+					'docs/css/<%= name %>.min.css': 'src/<%= name %>.scss',
+					'docs/css/docs.min.css': 'src/docs/docs.scss',
+				},
 			},
 		},
 		// ---------------------------------------------------- SASS-LINT //
@@ -141,6 +145,21 @@ module.exports = grunt => {
 			},
 			dist: {
 				src: 'dist/css/<%= name %>.min.css',
+			},
+			docs: {
+				map: {
+					inline: false,
+					sourcesContent: true,
+					prev: 'docs/css/<%= name %>.css.map',
+					annotation: 'docs/css/',
+				},
+				src: 'docs/css/docs.min.css',
+			},
+			dist_docs_sop: {
+				src: 'docs/css/<%= name %>.min.css',
+			},
+			dist_docs: {
+				src: 'docs/css/docs.min.css',
 			},
 		},
 		// ---------------------------------------------------- WATCH //

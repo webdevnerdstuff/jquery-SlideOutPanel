@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113524767-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-113524767-2');
+	</script>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>jQuery SlideOutPanel - Demo</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/slide-out-panel.min.css">
+</head>
+
+<body id="demo-page">
+  <header>
+    <div class="open-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div id="panel-menu" class="slide-out-panel">
+      <header>Menu</header>
+      <section>
+        <div class="row">
+          <div class="col-12">
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="demo.html">Demo</a></li>
+              <li>
+                <a href="https://github.com/webdevnerdstuff/jquery-SlideOutPanel" target="_blank">Github</a>
+              </li>
+              <li>
+                <a href="https://www.npmjs.com/package/jquery-slideoutpanel" target="_blank">NPM Package</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <footer>
+        Copyright &copy; 2020 WebDevNerdStuff
+      </footer>
+    </div>
+  </header>
+
+  <main id="main-container">
+    <section>
+      <div class="top container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h1>jQuery SlideOutPanel</h1>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================================================== slideFrom -->
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h2>Slide From</h2>
+            <p>
+              <button class="sop-button basic-right btn btn-success" data-setting="slideFromRight">Slide From Right</button>
+              <button class="sop-button basic-left btn btn-success" data-setting="slideFromLeft">Slide From Left</button>
+              <button class="sop-button basic-top btn btn-success" data-setting="slideFromTop">Slide From Top</button>
+              <button class="sop-button basic-bottom btn btn-success" data-setting="slideFromBottom">Slide From Bottom</button>
+            </p>
+
+            <pre class="prettyprint lang-js">
+							$('#slide-out-panel').SlideOutPanel();
+
+							$('#slide-out-panel').SlideOutPanel({
+								&nbsp;&nbsp; slideFrom: 'left',
+							});
+
+              $('#slide-out-panel').SlideOutPanel({
+                &nbsp;&nbsp; slideFrom: 'top',
+              });
+
+              $('#slide-out-panel').SlideOutPanel({
+                &nbsp;&nbsp; slideFrom: 'bottom',
+              });
+            </pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================================================== bodyPush -->
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h2>Body Push</h2>
+            <p>
+              <button class="sop-button basic-right btn btn-success" data-setting="bodyPushRight">Body Push Right</button>
+              <button class="sop-button basic-left btn btn-success" data-setting="bodyPushLeft">Body Push Left</button>
+            </p>
+
+            <pre class="prettyprint lang-js">
+              $('#slide-out-panel').SlideOutPanel({
+                &nbsp;&nbsp; bodyPush: true,
+              });
+
+              $('#slide-out-panel').SlideOutPanel({
+                &nbsp;&nbsp; bodyPush: true,
+                &nbsp;&nbsp; slideFrom: 'left',
+              });
+            </pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================================================== enableEscapeKey -->
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h2>Escape Key Close</h2>
+            <p>
+              <button class="sop-button basic-right btn btn-success" data-setting="enableEscapeKey">Open Escape Close</button>
+            </p>
+
+            <pre class="prettyprint lang-js">
+              $('#slide-out-panel').SlideOutPanel({
+                &nbsp;&nbsp; enableEscapeKey: true,
+              });
+            </pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================================================== screenClose -->
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h2>Screen Close</h2>
+            <p>
+              <button class="sop-button basic-right btn btn-success" data-setting="screenClose">Screen Close Off</button>
+            </p>
+
+            <pre class="prettyprint lang-js">
+              $('#slide-out-panel').SlideOutPanel({
+                &nbsp;&nbsp; screenClose: false,
+              });
+            </pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================================================== showScreen -->
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h2>Show Screen</h2>
+            <p>
+              <button class="sop-button basic-right btn btn-success" data-setting="showScreen">Do Not Show Screen</button>
+            </p>
+
+            <pre class="prettyprint lang-js">
+              $('#slide-out-panel').SlideOutPanel({
+                &nbsp;&nbsp; showScreen: false,
+              });
+            </pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================================================== transitionDuration -->
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h2>Transitions</h2>
+            <p>
+              <button class="sop-button basic-right btn btn-success" data-setting="transitionDuration">Duration Slower</button>
+            </p>
+
+            <pre class="prettyprint lang-js">
+              $('#slide-out-panel').SlideOutPanel({
+                &nbsp;&nbsp; transitionDuration: '5s',
+              });
+						</pre>
+
+            <p>
+              <button class="sop-button basic-right btn btn-success" data-setting="transition">Cubic Bezier</button>
+            </p>
+
+            <pre class="prettyprint lang-js">
+              $('#slide-out-panel').SlideOutPanel({
+                &nbsp;&nbsp; transition: 'cubic-bezier(.175, .885, .32, 1.275)',
+              });
+            </pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================================================== width -->
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h2>Width</h2>
+            <p>
+              <button class="sop-button basic-right btn btn-success" data-setting="width">Width 50vw</button>
+            </p>
+
+            <pre class="prettyprint lang-js">
+              $('#slide-out-panel').SlideOutPanel({
+                &nbsp;&nbsp; width: '50vw',
+              });
+            </pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================================================== offsetTop -->
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h2>Offset Top</h2>
+            <p>
+              <button class="sop-button basic-right btn btn-success" data-setting="offsetTop">Offset Top</button>
+            </p>
+
+            <pre class="prettyprint lang-js">
+              $('#slide-out-panel').SlideOutPanel({
+                &nbsp;&nbsp; offsetTop: '50px',
+              });
+            </pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================================================== Events -->
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h2>Events</h2>
+            <p>
+              <button class="sop-button basic-right btn btn-success" data-setting="events">Events</button>
+            </p>
+
+            <pre class="prettyprint lang-js">
+              $('#slide-out-panel').SlideOutPanel({
+                &nbsp;&nbsp; beforeOpen() {
+								&nbsp;&nbsp;&nbsp;&nbsp; alert('Before Panel Opens');
+								&nbsp;&nbsp; },
+                &nbsp;&nbsp; afterOpen() {
+								&nbsp;&nbsp;&nbsp;&nbsp; alert('After Panel Opens');
+								&nbsp;&nbsp; },
+                &nbsp;&nbsp; beforeClosed() {
+								&nbsp;&nbsp;&nbsp;&nbsp; alert('Before Panel Closed');
+								&nbsp;&nbsp; },
+                &nbsp;&nbsp; afterClosed() {
+								&nbsp;&nbsp;&nbsp;&nbsp; alert('After Panel Closed');
+								&nbsp;&nbsp; },
+              });
+            	</pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================================================== Methods -->
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h2>Methods</h2>
+            <p>
+              <button class="sop-button basic-right btn btn-success" data-setting="methodsOpen">Open Panel</button>
+              <button class="sop-button basic-right btn btn-success" data-setting="methodsClose">Close Panel</button>
+              <button class="sop-button basic-right btn btn-success" data-setting="methodsToggle">Toggle Pannel</button>
+              <button class="sop-button basic-right btn btn-success" data-setting="methodsDestroy">Destroy Pannel</button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <p>
+            Copyright &copy; 2020 WebDevNerdStuff
+            <br>
+            Licensed under the MIT license.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================================================== slideFrom Panels -->
+  <div id="slideFromRight" class="slide-out-panel">
+    <header>Title</header>
+    <section>Hello World</section>
+    <footer>Footer</footer>
+  </div>
+
+  <div id="slideFromLeft" class="slide-out-panel">
+    <header>Title</header>
+    <section>Hello World</section>
+    <footer>Footer</footer>
+  </div>
+
+  <div id="slideFromTop" class="slide-out-panel">
+    <header>Title</header>
+    <section>Hello World</section>
+    <footer>Footer</footer>
+  </div>
+
+  <div id="slideFromBottom" class="slide-out-panel">
+    <header>Title</header>
+    <section>Hello World</section>
+    <footer>Footer</footer>
+  </div>
+
+  <!-- ==================================================== bodyPush Panels -->
+  <div id="bodyPushRight" class="slide-out-panel">
+    <header>Title</header>
+    <section>Hello World</section>
+    <footer>Footer</footer>
+  </div>
+
+  <div id="bodyPushLeft" class="slide-out-panel">
+    <header>Title</header>
+    <section>Hello World</section>
+    <footer>Footer</footer>
+  </div>
+
+  <!-- ==================================================== enableEscapeKey Panel -->
+  <div id="enableEscapeKey" class="slide-out-panel">
+    <header>Title</header>
+    <section>Hello World</section>
+    <footer>Footer</footer>
+  </div>
+
+  <!-- ==================================================== screenClose Panel -->
+  <div id="screenClose" class="slide-out-panel">
+    <header>Title</header>
+    <section>Hello World</section>
+    <footer>Footer</footer>
+  </div>
+
+  <!-- ==================================================== showScreen Panel -->
+  <div id="showScreen" class="slide-out-panel">
+    <header>Title</header>
+    <section>Hello World</section>
+    <footer>Footer</footer>
+  </div>
+
+  <!-- ==================================================== transitionDuration Panel -->
+  <div id="transitionDuration" class="slide-out-panel">
+    <header>Title</header>
+    <section>Hello World</section>
+    <footer>Footer</footer>
+  </div>
+
+  <!-- ==================================================== transition Panel -->
+  <div id="transition" class="slide-out-panel">
+    <header>Title</header>
+    <section>Hello World</section>
+    <footer>Footer</footer>
+  </div>
+
+  <!-- ==================================================== width Panel -->
+  <div id="width" class="slide-out-panel">
+    <header>Title</header>
+    <section>Hello World</section>
+    <footer>Footer</footer>
+  </div>
+
+  <!-- ==================================================== offsetTop Panel -->
+  <div id="offsetTop" class="slide-out-panel">
+    <header>Title</header>
+    <section>Hello World</section>
+    <footer>Footer</footer>
+  </div>
+
+  <!-- ==================================================== Events Panel -->
+  <div id="events" class="slide-out-panel">
+    <header>Title</header>
+    <section>Hello World</section>
+    <footer>Footer</footer>
+  </div>
+
+  <!-- ==================================================== Methods Panel -->
+  <div id="methods" class="slide-out-panel">
+    <header>Title</header>
+    <section>Hello World</section>
+    <footer>Footer</footer>
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="js/slide-out-panel.min.js"></script>
+
+  <script>
+    // slideFrom //
+    var slideFromRight = $('#slideFromRight').SlideOutPanel();
+    var slideFromLeft = $('#slideFromLeft').SlideOutPanel({ slideFrom: 'left' });
+    var slideFromTop = $('#slideFromTop').SlideOutPanel({ slideFrom: 'top' });
+    var slideFromBottom = $('#slideFromBottom').SlideOutPanel({ slideFrom: 'bottom' });
+
+    // bodyPush //
+    var bodyPushRight = $('#bodyPushRight').SlideOutPanel({
+      bodyPush: true,
+    });
+
+    var bodyPushLeft = $('#bodyPushLeft').SlideOutPanel({
+      bodyPush: true,
+      slideFrom: 'left',
+    });
+
+    // enableEscapeKey //
+    var enableEscapeKey = $('#enableEscapeKey').SlideOutPanel({
+      enableEscapeKey: true,
+    });
+
+    // screenClose //
+    var screenClose = $('#screenClose').SlideOutPanel({
+      screenClose: false,
+    });
+
+    // showScreen //
+    var showScreen = $('#showScreen').SlideOutPanel({
+      showScreen: false,
+    });
+
+    // transitionDuration //
+    var transitionDuration = $('#transitionDuration').SlideOutPanel({
+      transitionDuration: '5s',
+    });
+
+    // transition //
+    var transition = $('#transition').SlideOutPanel({
+      transition: 'cubic-bezier(.175, .885, .32, 1.275)',
+      transitionDuration: '1s',
+    });
+
+    // transition //
+    var width = $('#width').SlideOutPanel({
+      width: '50vw',
+    });
+
+    // offsetTop //
+    var offsetTop = $('#offsetTop').SlideOutPanel({
+      offsetTop: '50px',
+    });
+
+    // Events //
+    var events = $('#events').SlideOutPanel({
+      beforeOpen() {
+        alert('Before Panel Opens');
+      },
+      afterOpen() {
+        alert('After Panel Opens');
+      },
+      beforeClosed() {
+        alert('Before Panel Closed');
+      },
+      afterClosed() {
+        alert('After Panel Closed');
+      },
+    });
+
+    // Methods //
+    var methods = $('#methods').SlideOutPanel({
+      showScreen: false,
+    });
+
+
+    $('body').on('click', '.sop-button', function() {
+      var setting = $(this).attr('data-setting');
+
+      // slideFrom //
+      if (setting === 'slideFromRight') {
+        slideFromRight.open();
+      }
+      else if (setting === 'slideFromLeft') {
+        slideFromLeft.open();
+      }
+      else if (setting === 'slideFromTop') {
+        slideFromTop.open();
+      }
+      else if (setting === 'slideFromBottom') {
+        slideFromBottom.open();
+      }
+
+      // bodyPush //
+      else if (setting === 'bodyPushRight') {
+        bodyPushRight.open();
+      }
+      else if (setting === 'bodyPushLeft') {
+        bodyPushLeft.open();
+      }
+
+      // enableEscapeKey //
+      else if (setting === 'enableEscapeKey') {
+        enableEscapeKey.open();
+      }
+
+      // screenClose //
+      else if (setting === 'screenClose') {
+        screenClose.open();
+      }
+
+      // showScreen //
+      else if (setting === 'showScreen') {
+        showScreen.open();
+      }
+
+      // transitionDuration //
+      else if (setting === 'transitionDuration') {
+        transitionDuration.open();
+      }
+
+      // transition //
+      else if (setting === 'transition') {
+        transition.open();
+      }
+
+      // transition //
+      else if (setting === 'width') {
+        width.open();
+      }
+
+      // offsetTop //
+      else if (setting === 'offsetTop') {
+        offsetTop.open();
+      }
+
+      // Events //
+      else if (setting === 'events') {
+        events.open();
+      }
+
+      // Methods //
+      // open //
+      else if (setting === 'methodsOpen') {
+        methods.open();
+      }
+      // close //
+      else if (setting === 'methodsClose') {
+        methods.close();
+      }
+      // toggle //
+      else if (setting === 'methodsToggle') {
+        methods.toggle();
+      }
+      // destroy //
+      else if (setting === 'methodsDestroy') {
+        methods.destroy();
+      }
+    });
+
+    // Menu //
+    var panelMenu = $('#panel-menu').SlideOutPanel({
+      afterClosed() {
+        $('.open-nav').fadeIn('fast');
+      },
+    });
+
+    $('body').on('click', '.open-nav', function() {
+      panelMenu.open();
+      $('.open-nav').fadeOut('fast');
+    });
+  </script>
+
+  <link rel="stylesheet" href="css/docs.min.css">
+
+</body>
+
+</html>

@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113524767-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-113524767-2');
+  </script>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>jQuery SlideOutPanel</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/slide-out-panel.min.css">
+</head>
+
+<body>
+  <header>
+    <div class="open-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div id="panel-menu" class="slide-out-panel">
+      <header>Menu</header>
+      <section>
+        <div class="row">
+          <div class="col-12">
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="demo.html">Demo</a></li>
+              <li>
+                <a href="https://github.com/webdevnerdstuff/jquery-SlideOutPanel" target="_blank">Github</a>
+              </li>
+              <li>
+                <a href="https://www.npmjs.com/package/jquery-slideoutpanel" target="_blank">NPM Package</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <footer>
+        Copyright &copy; 2020 WebDevNerdStuff
+      </footer>
+    </div>
+  </header>
+
+  <main id="main-container">
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h1>jQuery SlideOutPanel</h1>
+            <p>
+              Simple jQuery Plugin to add a sliding out panel.
+            </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <h2>Installation</h2>
+            <pre class="prettyprint lang-sh">
+              npm install --save-dev jquery-slideoutpanel
+            </pre>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <h2>Demo</h2>
+            <p>
+							<a href="https://webdevnerdstuff.github.io/jquery-SlideOutPanel/demo.html">https://webdevnerdstuff.github.io/jquery-SlideOutPanel/demo.html</a>
+						</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <h2>Usage</h2>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <h4>HTML</h4>
+            <p>
+              The html must be set up with the proper id and internal elements.
+            </p>
+            <p>
+              Allowed tags: <code>&lt;header&gt; &lt;footer&gt;</code>
+            </p>
+            <p>
+              Optional tags: <code>&lt;header&gt; &lt;footer&gt;</code>
+            </p>
+            <p>
+              Required tag: <code>&lt;section&gt;</code>
+            </p>
+            <pre class="prettyprint lang-html">
+              &#x3C;div id=&#x22;slide-out-panel&#x22; class=&#x22;slide-out-panel&#x22;&#x3E;
+              &nbsp;&nbsp; &#x3C;header&#x3E;Panel Title&#x3C;/header&#x3E;
+              &nbsp;&nbsp; &#x3C;section&#x3E;Panel content section&#x3C;/section&#x3E;
+              &nbsp;&nbsp; &#x3C;footer&#x3E;Panel footer&#x3C;/footer&#x3E;
+              &#x3C;/div&#x3E;
+            </pre>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <h4>Options</h4>
+
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Options</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>bodyPush</td>
+                    <td>boolean</td>
+                    <td>false</td>
+                    <td>true <br> false</td>
+                    <td>Enables pushing the body when the tab opens (works with slideFrom right and left</td>
+                  </tr>
+                  <tr>
+                    <td>breakpoint</td>
+                    <td>String</td>
+                    <td>768px</td>
+                    <td></td>
+                    <td>Sets the breakpoint (matches the breakpoint in SCSS/CSS). This is used when bodyPush is true</td>
+                  </tr>
+                  <tr>
+                    <td>closeBtn</td>
+                    <td>html</td>
+                    <td><code>&amp;#10005;</code> <br> ✕</td>
+                    <td></td>
+                    <td>Add a custom close button instead of the default</td>
+                  </tr>
+                  <tr>
+                    <td>closeBtnSize</td>
+                    <td>String</td>
+                    <td>12px</td>
+                    <td></td>
+                    <td>Adjust the close button size</td>
+                  </tr>
+                  <tr>
+                    <td>enableEscapeKey</td>
+                    <td>Boolean</td>
+                    <td>false</td>
+                    <td>true <br> false</td>
+                    <td>Enables the esc key to close all panels</td>
+                  </tr>
+                  <tr>
+                    <td>offsetTop</td>
+                    <td>String</td>
+                    <td>0</td>
+                    <td></td>
+                    <td>Offset the top of the panel</td>
+                  </tr>
+                  <tr>
+                    <td>screenClose</td>
+                    <td>Boolean</td>
+                    <td>true</td>
+                    <td>true <br> false</td>
+                    <td>Enables closing of panels by clicking on the background screen.</td>
+                  </tr>
+                  <tr>
+                    <td>screenOpacity</td>
+                    <td>String</td>
+                    <td>0.5</td>
+                    <td></td>
+                    <td>Set the background screen's opacity</td>
+                  </tr>
+                  <tr>
+                    <td>screenZindex</td>
+                    <td>String</td>
+                    <td>9998</td>
+                    <td></td>
+                    <td>Set the background screen's z-index</td>
+                  </tr>
+                  <tr>
+                    <td>showScreen</td>
+                    <td>Boolean</td>
+                    <td>true</td>
+                    <td>true <br> false</td>
+                    <td>Enable/Disable showing the background screen</td>
+                  </tr>
+                  <tr>
+                    <td>slideFrom</td>
+                    <td>String</td>
+                    <td>right</td>
+                    <td>top <br> right <br> bottom <br> left</td>
+                    <td>Set to choose where the panel should slide out from</td>
+                  </tr>
+                  <tr>
+                    <td>transition</td>
+                    <td>String</td>
+                    <td>ease</td>
+                    <td></td>
+                    <td>Set the transition-timing-function. Accepts the standard values used with CSS.</td>
+                  </tr>
+                  <tr>
+                    <td>transitionDuration</td>
+                    <td>String</td>
+                    <td>0.35s</td>
+                    <td></td>
+                    <td>Set the duration of the transitions. Adding "s" is optional.</td>
+                  </tr>
+                  <tr>
+                    <td>width</td>
+                    <td>String</td>
+                    <td>350px</td>
+                    <td></td>
+                    <td>Set the panels width</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <pre class="prettyprint lang-js">
+              $('#slide-out-panel').SlideOutPanel({
+                &nbsp;&nbsp; bodyPush: false,
+                &nbsp;&nbsp; closeBtn: '<i class="fas fa-times"></i>',
+                &nbsp;&nbsp; closeBtnSize: '',
+                &nbsp;&nbsp; enableEscapeKey: true,
+                &nbsp;&nbsp; offsetTop: '50px',
+                &nbsp;&nbsp; screenClose: false,
+                &nbsp;&nbsp; screenOpacity: '1',
+                &nbsp;&nbsp; screenZindex: '9998',
+                &nbsp;&nbsp; showScreen: false,
+                &nbsp;&nbsp; slideFrom: 'right',
+                &nbsp;&nbsp; transition: 'ease',
+                &nbsp;&nbsp; transitionDuration: '0.35s',
+                &nbsp;&nbsp; width: '350px',
+                });
+            </pre>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <h4>Events</h4>
+
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>rendered</td>
+                    <td>Fired after the panel is finished building</td>
+                  </tr>
+                  <tr>
+                    <td>beforeOpen</td>
+                    <td>Fired before panel opens</td>
+                  </tr>
+                  <tr>
+                    <td>afterOpen</td>
+                    <td>Fired after panel has opened</td>
+                  </tr>
+                  <tr>
+                    <td>beforeClosed</td>
+                    <td>Fired before panel is closed</td>
+                  </tr>
+                  <tr>
+                    <td>afterClosed</td>
+                    <td>Fired after the panel is closed</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <pre class="prettyprint lang-js">
+              $('#slide-out-panel').SlideOutPanel({
+                &nbsp;&nbsp; rendered() {
+                &nbsp;&nbsp;&nbsp;&nbsp; // Some code...
+                &nbsp;&nbsp; },
+                &nbsp;&nbsp; beforeOpen() {
+                &nbsp;&nbsp;&nbsp;&nbsp; // Some code...
+                &nbsp;&nbsp; },
+                &nbsp;&nbsp; afterOpen() {
+                &nbsp;&nbsp;&nbsp;&nbsp; // Some code...
+                &nbsp;&nbsp; },
+                &nbsp;&nbsp; beforeClosed() {
+                &nbsp;&nbsp;&nbsp;&nbsp; // Some code...
+                &nbsp;&nbsp; },
+                &nbsp;&nbsp; afterClosed() {
+                &nbsp;&nbsp;&nbsp;&nbsp; // Some code...
+                &nbsp;&nbsp; },
+                });
+            </pre>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <h4>Methods</h4>
+
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>open</td>
+                    <td>Opens the panel</td>
+                  </tr>
+                  <tr>
+                    <td>close</td>
+                    <td>Closes the panel</td>
+                  </tr>
+                  <tr>
+                    <td>toggle</td>
+                    <td>Toggles the panel open/close</td>
+                  </tr>
+                  <tr>
+                    <td>destroy</td>
+                    <td>Removes the panel from the DOM</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <pre class="prettyprint lang-js">
+              const slideOutPanel = $('#slide-out-panel').SlideOutPanel();
+
+              slideOutPanel.open();
+
+              slideOutPanel.close();
+
+              slideOutPanel.toggle();
+
+              slideOutPanel.destroy();
+            </pre>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <h4>Sass Variables</h4>
+
+            <div class="table-responsive"></div>
+            <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Default</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>$pieces-padding</td>
+                  <td>15px</td>
+                  <td>Padding for the panel pieces (header, section, footer)</td>
+                </tr>
+                <tr>
+                  <td>$so-screen-sm</td>
+                  <td>768px</td>
+                  <td>Responsive breakpoint</td>
+                </tr>
+                <tr>
+                  <td>$so-close-btn-color</td>
+                  <td>#000</td>
+                  <td>Color of the close button</td>
+                </tr>
+                <tr>
+                  <td>$so-close-font-size</td>
+                  <td>12px</td>
+                  <td>Font size of the close button</td>
+                </tr>
+                <tr>
+                  <td>$so-container-background</td>
+                  <td>#fff</td>
+                  <td>The panel background color</td>
+                </tr>
+                <tr>
+                  <td>$so-container-box-shadow</td>
+                  <td>-3px 3px 9px rgba(0, 0, 0, .3)</td>
+                  <td>The panel box shadow</td>
+                </tr>
+                <tr>
+                  <td>$so-container-transition</td>
+                  <td>top ease, right ease, bottom ease, left ease</td>
+                  <td>Transition effect</td>
+                </tr>
+                <tr>
+                  <td>$so-container-z-index</td>
+                  <td>9999</td>
+                  <td>The panel z-index</td>
+                </tr>
+                <tr>
+                  <td>$so-content-no-header-padding-top</td>
+                  <td>$pieces-padding * 2</td>
+                  <td>The top padding of the <code>&lt;section&gt;</code> when there is no header</td>
+                </tr>
+                <tr>
+                  <td>$so-header-background-color</td>
+                  <td>#fff</td>
+                  <td>The header background color</td>
+                </tr>
+                <tr>
+                  <td>$so-header-border-color</td>
+                  <td>#e5e5e5</td>
+                  <td>The header bottom border color</td>
+                </tr>
+                <tr>
+                  <td>$so-header-border-width</td>
+                  <td>1px</td>
+                  <td>The header border width</td>
+                </tr>
+                <tr>
+                  <td>$so-content-background-color</td>
+                  <td>#fff</td>
+                  <td>The <code>&lt;section&gt;</code> background color</td>
+                </tr>
+                <tr>
+                  <td>$so-footer-background-color</td>
+                  <td>#fff</td>
+                  <td>The <code>&lt;footer&gt;</code> background color</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <h2>Examples</h2>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <p>Initialize plugin:</p>
+
+          <pre class="prettyprint lang-js">
+              $('#slide-out-panel').SlideOutPanel();
+            </pre>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <p>Changing the direction the panel slides out from:</p>
+
+          <pre class="prettyprint lang-js">
+              $('#slide-out-panel').SlideOutPanel({
+                &nbsp;&nbsp; slideFrom: 'top',
+              });
+
+              $('#slide-out-panel').SlideOutPanel({
+                &nbsp;&nbsp; slideFrom: 'right',
+              });
+
+              $('#slide-out-panel').SlideOutPanel({
+                &nbsp;&nbsp; slideFrom: 'bottom',
+              });
+
+              $('#slide-out-panel').SlideOutPanel({
+                &nbsp;&nbsp; slideFrom: 'left',
+              });
+            </pre>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <p>Close button customization:</p>
+
+          <pre class="prettyprint lang-js">
+              $('#slide-out-panel').SlideOutPanel({
+                &nbsp;&nbsp; closeBtn: '<i class="fas fa-times"></i>',
+                &nbsp;&nbsp; closeBtnSize: '18px',
+              });
+            </pre>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <p>Background screen customization:</p>
+
+          <pre class="prettyprint lang-js">
+              $('#slide-out-panel').SlideOutPanel({
+              &nbsp;&nbsp; screenClose: true,
+              &nbsp;&nbsp; screenOpacity: '0.5',
+              &nbsp;&nbsp; screenZindex: '9998',
+              &nbsp;&nbsp; showScreen: true,
+              });
+            </pre>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <h2>Dependencies</h2>
+          <p>jQuery</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <h2>Change Log</h2>
+          <p><a href="https://github.com/webdevnerdstuff/jquery-SlideOutPanel/blob/master/CHANGELOG.md">CHANGELOG</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <h2>License</h2>
+          <p>
+            Copyright &copy; 2020 WebDevNerdStuff
+            <br>
+            Licensed under the MIT license.
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="js/slide-out-panel.min.js"></script>
+
+  <script>
+    $(function() {
+      var panelMenu = $('#panel-menu').SlideOutPanel({
+        afterClosed() {
+          $('.open-nav').fadeIn('fast');
+        },
+      });
+
+      $('body').on('click', '.open-nav', function() {
+        panelMenu.open();
+        $('.open-nav').fadeOut('fast');
+      });
+    });
+  </script>
+
+  <link rel="stylesheet" href="css/docs.min.css">
+
+</body>
+
+</html>
