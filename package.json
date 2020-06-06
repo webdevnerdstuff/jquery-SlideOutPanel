@@ -1,58 +1,58 @@
 {
-  "name": "jquery-slideoutpanel",
-  "version": "1.0.33",
-  "description": "jQuery SlideOutPanel is a jQuery Plugin to add a sliding out panel.",
-  "main": "Gruntfile.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "WebDevNerdStuff & Bunnies... lots and lots of bunnies! (https://webdevnerdstuff.com)",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/webdevnerdstuff/jquery-SlideOutPanel.git"
-  },
-  "bugs": {
-    "url": "https://github.com/webdevnerdstuff/jquery-SlideOutPanel/issues"
-  },
-  "homepage": "https://github.com/webdevnerdstuff/jquery-SlideOutPanel#readme",
-  "keywords": [
-    "slideOutPanel",
-    "slide-out-panel",
-    "slide out panel",
-    "slide_out_panel",
-    "slide",
-    "out",
-    "panel",
-    "jQuery"
-  ],
-  "devDependencies": {
-    "@babel/core": "^7.10.2",
-    "@babel/preset-env": "^7.10.2",
-    "autoprefixer": "^9.8.0",
-    "babel-plugin-module-resolver": "^4.0.0",
-    "babel-preset-env": "^1.7.0",
-    "babelify": "^10.0.0",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-friendly-formatter": "^4.0.1",
-    "eslint-import-resolver-babel-module": "^5.1.2",
-    "eslint-plugin-import": "^2.20.2",
-    "grunt": "^1.1.0",
-    "grunt-babel": "^8.0.0",
-    "grunt-cli": "^1.3.2",
-    "grunt-contrib-clean": "^2.0.0",
-    "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-uglify": "^4.0.1",
-    "grunt-contrib-watch": "^1.1.0",
-    "grunt-postcss": "^0.9.0",
-    "grunt-sass": "^3.1.0",
-    "grunt-sass-lint": "^0.2.4",
-    "gruntify-eslint": "^5.0.0",
-    "load-grunt-tasks": "^5.1.0",
-    "node-sass": "^4.14.1"
-  },
-  "dependencies": {
-    "jquery": "^3.5.1"
-  }
+	"name": "jquery-slideoutpanel",
+	"version": "1.0.34",
+	"description": "jQuery SlideOutPanel is a jQuery Plugin to add a sliding out panel.",
+	"main": "Gruntfile.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "WebDevNerdStuff & Bunnies... lots and lots of bunnies! (https://webdevnerdstuff.com)",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/webdevnerdstuff/jquery-SlideOutPanel.git"
+	},
+	"bugs": {
+		"url": "https://github.com/webdevnerdstuff/jquery-SlideOutPanel/issues"
+	},
+	"homepage": "https://github.com/webdevnerdstuff/jquery-SlideOutPanel#readme",
+	"keywords": [
+		"slideOutPanel",
+		"slide-out-panel",
+		"slide out panel",
+		"slide_out_panel",
+		"slide",
+		"out",
+		"panel",
+		"jQuery"
+	],
+	"devDependencies": {
+		"@babel/core": "^7.10.2",
+		"@babel/preset-env": "^7.10.2",
+		"autoprefixer": "^9.8.0",
+		"babel-plugin-module-resolver": "^4.0.0",
+		"babel-preset-env": "^1.7.0",
+		"babelify": "^10.0.0",
+		"eslint": "^6.8.0",
+		"eslint-config-airbnb-base": "^14.1.0",
+		"eslint-friendly-formatter": "^4.0.1",
+		"eslint-import-resolver-babel-module": "^5.1.2",
+		"eslint-plugin-import": "^2.20.2",
+		"grunt": "^1.1.0",
+		"grunt-babel": "^8.0.0",
+		"grunt-cli": "^1.3.2",
+		"grunt-contrib-clean": "^2.0.0",
+		"grunt-contrib-copy": "^1.0.0",
+		"grunt-contrib-uglify": "^4.0.1",
+		"grunt-contrib-watch": "^1.1.0",
+		"grunt-postcss": "^0.9.0",
+		"grunt-sass": "^3.1.0",
+		"grunt-sass-lint": "^0.2.4",
+		"gruntify-eslint": "^5.0.0",
+		"load-grunt-tasks": "^5.1.0",
+		"node-sass": "^4.14.1"
+	},
+	"dependencies": {
+		"jquery": "^3.5.1"
+	}
 }
