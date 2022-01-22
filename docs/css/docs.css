@@ -1,5 +1,5 @@
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 h2,
@@ -31,7 +31,6 @@ table {
   right: 10px;
   top: 10px;
 }
-
 .open-nav span {
   background-color: #000;
   display: block;
@@ -43,7 +42,6 @@ table {
 #panel-menu section li {
   margin-bottom: 10px;
 }
-
 #panel-menu footer {
   border-top: 1px solid #eee;
   bottom: 0;
@@ -51,7 +49,6 @@ table {
   position: absolute;
   text-align: center;
 }
-
 @media all and (max-width: 768px) {
   #panel-menu footer {
     position: relative;
@@ -65,18 +62,15 @@ table {
 #demo-page h2 {
   border: 0;
 }
-
 #demo-page pre {
   margin: 20px auto;
   text-align: left;
   width: fit-content;
   z-index: 0;
 }
-
 #demo-page button {
   z-index: 0;
 }
-
 #demo-page main .container:not(.top) {
   margin-bottom: 10vh;
 }
