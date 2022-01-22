@@ -55,12 +55,12 @@ html {
 
 // ---------------------------------------------------- SLIDE OUT PANEL //
 .slide-out-panel-container {
-	-webkit-overflow-scrolling: touch;
 	background-color: $so-container-background;
 	bottom: 0;
 	box-shadow: $so-container-box-shadow;
 	height: auto;
 	max-width: 100vw;
+	-webkit-overflow-scrolling: touch;
 	overflow-y: auto;
 	position: fixed;
 	top: 0;

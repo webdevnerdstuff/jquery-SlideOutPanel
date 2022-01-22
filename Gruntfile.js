@@ -1,4 +1,4 @@
-const sass = require('node-sass');
+const sass = require('sass');
 
 module.exports = grunt => {
 	require('load-grunt-tasks')(grunt);
@@ -117,13 +117,18 @@ module.exports = grunt => {
 				},
 			},
 		},
-		// ---------------------------------------------------- SASS-LINT //
-		sasslint: {
+		// ---------------------------------------------------- STYLELINT //
+		stylelint: {
 			options: {
-				configFile: '.sass-lint.yml',
-				formatter: 'stylish',
+				configFile: 'stylelint.config.js',
+				formatter: 'string',
+				ignoreDisables: false,
+				failOnError: true,
+				fix: true,
+				reportNeedlessDisables: false,
+				syntax: '',
 			},
-			target: ['src/**/*.scss'],
+			all: ['src/**/*.scss'],
 		},
 		// ---------------------------------------------------- POSTCSS //
 		postcss: {
@@ -173,7 +178,7 @@ module.exports = grunt => {
 			},
 			scss: {
 				files: ['src/**/*.scss'],
-				tasks: ['sass', 'postcss', 'sasslint'],
+				tasks: ['sass', 'postcss', 'stylelint'],
 			},
 		},
 		paths: {
