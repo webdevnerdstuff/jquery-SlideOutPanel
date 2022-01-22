@@ -1,6 +1,6 @@
 {
 	"name": "jquery-slideoutpanel",
-	"version": "1.0.34",
+	"version": "1.0.35",
 	"description": "jQuery SlideOutPanel is a jQuery Plugin to add a sliding out panel.",
 	"main": "Gruntfile.js",
 	"scripts": {
@@ -24,7 +24,9 @@
 		"slide",
 		"out",
 		"panel",
-		"jQuery"
+		"jQuery",
+		"webdevnerdstuff",
+		"wdns"
 	],
 	"devDependencies": {
 		"@babel/core": "^7.10.2",
