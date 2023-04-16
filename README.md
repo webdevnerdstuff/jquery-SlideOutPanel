@@ -6,6 +6,9 @@ jQuery SlideOutPanel
 
 Simple jQuery Plugin to add a sliding out panel.
 
+### Status
+I have decided to archive this project as I am no longer maintaining it.
+
 
 ### Installation
 
